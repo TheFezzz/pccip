@@ -1,0 +1,113 @@
+/* Универсальный селектор */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Селектор тега */
+body {
+    background-color: rgba(47, 108, 213, 0.379);
+}
+
+/* Селектор тега */
+ul {
+    background-color: rgb(147, 229, 158);
+}
+
+/* Селектор класса */
+.lis {
+    list-style-type: none; /* Убираем стандартные маркеры */
+    padding-left: 20px;
+}
+.styled-image:hover {
+    transform: scale(1.3);
+    /* Увеличение при наведении */
+}
+
+          @keyframes rotate {
+              from {
+                  transform: rotate(0deg);
+              }
+    
+              to {
+                  transform: rotate(360deg);
+              }
+            }
+              .rotating-element {
+                  animation: rotate 2s linear infinite;
+                  /* Поворот на 360 градусов за 2 секунды */
+              }
+
+/* Селектор дочерних элементов */
+.lis li {
+    padding-left: 25px;
+    background-image: url('img.jpg'); /* Подгружаем изображение */
+    background-size: 20px 20px; /* Размер маркера */
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+/* Селектор атрибута */
+input[type="text"] {
+    width: 200px;
+    height: 30px;
+    border: 2px solid #5200af;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Селектор псевдокласса */
+input[type="text"]:focus {
+    background-color: rgba(147, 229, 158, 0.5); /* Меняем цвет при фокусе */
+}
+/* Стили для таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Убираем двойные линии */
+    background-color: rgba(147, 229, 158, 0.5); /* Цвет фона таблицы */
+}
+
+/* Стили для границ ячеек */
+th, td {
+    border: 2px solid #5200af; /* Цвет границ */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Стили для заголовков таблицы */
+th {
+    background-color: rgba(47, 108, 213, 0.379); /* Цвет фона заголовков */
+    color: white;
+}
+
+/* Дочерний селектор */
+td > img {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px 20px;
+    border: 5pt solid #5200af;
+    box-shadow: 0 17px 32px rgba(86, 9, 127, 0.74); /* Тень */
+}
+
+/* Селектор контекстных элементов */
+td b {
+    color: rgb(60, 0, 128);
+}
+
+/* Селектор псевдоэлемента */
+p::first-letter {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2em;
+    color: rgb(3, 77, 86);
+    font-weight: 600;
+}
+
+/* Селектор псевдокласса */
+button:hover {
+    background-color: #7adced;
+}
+
+/* Селектор атрибутов */
+a[href$=".ru/"] {
+    color: rgb(56, 143, 82);
+}

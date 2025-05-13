@@ -1,0 +1,8 @@
+body {
+    font-family: Arial;     
+    font-size: 10pt;         
+    color: black;           
+    background-image: url('1.jpg');
+    background-repeat: repeat-x; 
+    text-decoration: line-through; /* Перечеркнутый текст */
+}

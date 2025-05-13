@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0px;
+    width: 100%;
+    max-width: 1530px;
+    margin: auto;
+}
+
+.item {
+    background-color: white;
+    text-align: center;
+    border: 3px solid;
+}
+
+.item1 { flex: 1 1 100%; height: 80px; border-color: rgb(255, 0, 0); }
+.item2, .item3, .item4 { flex: 1 1 30%; height: 300px; }
+.item2 { border-color: rgb(255, 204, 0); }
+.item3 { border-color: rgb(60, 255, 0); }
+.item4 { border-color: rgb(0, 238, 255); }
+.item5 { flex: 1 1 100%; height: 250px; border-color: rgb(0, 38, 255); }
+
+/* Корректируем расположение блоков */
+.flex-row {
+    display: flex;
+    width: 100%;
+}
+
+.item6, .item7, .item8, .item9 {
+    flex: 1 1 25%;
+    height: 505px;
+}
+
+.item6 { border-color: rgb(212, 0, 255); }
+.item7 { border-color: rgb(195, 0, 255); }
+.item8 { border-color: rgb(255, 0, 153); }
+.item9 { border-color: rgb(255, 0, 0); }
+
+.item10 { flex: 1 1 100%; height: 150px; border-color: rgb(0, 0, 0); }

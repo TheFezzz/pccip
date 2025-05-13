@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Карточка</title>
+    <!-- Внешняя таблица стилей -->
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <!-- Импортированная таблица стилей -->
+    <style>
+        @import url("imported.css");
+    </style>
+    <!-- Глобальная таблица стилей -->
+    <style>
+        p::first-letter {
+            font-size: 30pt;  
+            color: blue;     
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="font-family: Arial; font-size: 10pt; color: black; background-image: url('1.jpg'); background-repeat: repeat-x; text-decoration: line-through;">
+    <!-- Внутритеговые стили применены к тегу body -->
+    <p>Шикута Мартин Антонович</p>
+    <h3 style="color: red; text-align: justify; text-decoration: line-through;">21.08.2007</h3>
+    <ul id="hobbies-list">
+        <li>Программирование</li>
+        <li>Чтение</li>
+        <li>Спорт</li>
+    </ul>
+    <div>
+        <p>Каскадность проявляется, например, в стилях для тега body (внешний файл, глобальные стили и внутритеговые стили) и для заголовка h3 (глобальные стили и внутритеговые стили). Браузер объединяет все эти стили, при этом внутритеговые стили имеют наибольший приоритет.</p>
+    </div>
+</body>
+</html>

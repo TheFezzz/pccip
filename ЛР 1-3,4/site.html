@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио-резюме</title>
+    <style>
+        body {
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            background: url('1.jpg') no-repeat center center fixed;
+    background-size: cover;
+        }
+        h2 {
+            font-family: 'Georgia', serif;
+            color: #222;
+            text-align: center;
+        }
+        p, li, label, select, input, textarea, td, a {
+            font-size: 18px;
+            text-align: left;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: white;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+        }
+        form {
+            margin: 20px auto;
+            width: 50%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        button {
+            background-color: #ff4081;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #e6006e;
+        }
+        select, input, textarea {
+            font-size: 16px;
+            padding: 5px;
+            width: 90%;
+            margin: 5px 0;
+        }
+        img {
+            border-radius: 50%;
+            margin: 20px 0;
+        }
+        a {
+            color: blue;
+            font-weight: bold;
+        }
+        a:hover {
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <img src="img.jpg" alt="Фотография" width="250">
+    <h2>Шикута Камилла Антоновна</h2>
+    <p><strong>Должность:</strong> <em>Инженер-программист</em></p>
+    <p><strong>Уровень дохода:</strong> <em>10000 BYN</em></p>
+    <p><strong>Дата рождения:</strong> <em>21.08.2007</em></p>
+    <p><strong>Проживание:</strong> <em>г. Гродно</em></p>
+    <p><strong>Контактная информация:</strong></p>
+    <p>Телефон: <em>+375 (29) 854-27-73</em></p>
+    <p>Email: <em>kamillasikuta@gmail.com</em></p>
+    
+    <h2>В этом видео я расскажу немного о себе</h2>
+    <video width="500" controls>
+        <source src="video.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+    
+    <h2>Ключевые знания и навыки</h2>
+    <ul>
+        <li><em>Знание языков программирования</em></li>
+        <li><em>Умение соблюдать дедлайн</em></li>
+        <li><em>Работа с разными программами</em></li>
+        <li><em>Работа с графической частью</em></li>
+    </ul>
+    
+    <h2>Опыт работы</h2>
+    <p><strong>05.2025 – 07.2025</strong> <em>Учебная практика, Школа № 34</em></p>
+    <p><strong>07.2025 – 10.2025</strong> <em>Оператор ЭВМ, Гродно</em></p>
+    
+    <h2>Образование</h2>
+    <p><strong>2026 – </strong> <em>Учреждение образования "Гродненский государственный политехнический колледж", техник-программист</em></p>
+    
+    <h2>Тест</h2>
+    <form>
+        <label for="name">Введите имя:</label>
+        <input type="text" id="name" name="name">
+        
+        <p><strong>1. Ваша любимая книга?</strong></p>
+        <input type="checkbox" id="book1" name="book" value="Гончие Лилит">
+        <label for="book1">Гончие Лилит</label><br>
+        <input type="checkbox" id="book2" name="book" value="Осколки света">
+        <label for="book2">Осколки света</label><br>
+        <input type="checkbox" id="book3" name="book" value="Разрушительная любовь">
+        <label for="book3">Разрушительная любовь</label><br>
+        
+        <p><strong>2. Ваша любимая песня?</strong></p>
+        <input type="radio" id="song1" name="song" value="Автостопом">
+        <label for="song1">Автостопом</label><br>
+        <input type="radio" id="song2" name="song" value="Матрешка">
+        <label for="song2">Матрешка</label><br>
+        <input type="radio" id="song3" name="song" value="Город">
+        <label for="song3">Город</label><br>
+        
+        <button type="submit">Отправить</button>
+    </form>
+    
+    <h2>Таблица</h2>
+    <table>
+        <tr>
+            <td colspan="2">Объединено горизонтально</td>
+            <td>Текст</td>
+            <td>Текст</td>
+            <td>Текст</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Объединено вертикально</td>
+            <td>Текст</td>
+            <td>Текст</td>
+            <td>Текст</td>
+            <td>Текст</td>
+        </tr>
+    </table>
+    
+    <h2>Выберите курс:</h2>
+    <select id="course" name="course">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    
+    <h2>Список Шикута</h2>
+    <ol>
+        <li>Шикута Камилла Антоновна</li>
+        <li>Шикута Мартин Антонович</li>
+        <li>Шикута Ромуальд Антонович</li>
+    </ol>
+    
+    <a href="https://kinogo.ec/8373-strela-2012-k1.html" target="_blank">Ссылка на сериал "Стрела"</a>
+    
+    <h2>Аудио</h2>
+    <audio controls>
+        <source src="GUF.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+    
+    <br>
+    <a href="#top">Наверх</a>
+</body>
+</html>
