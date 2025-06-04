@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Демонстрация</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Демонстрация JavaScript</h1>
+
+    <!-- Раздел 1: Способы внедрения JS -->
+    <section id="section1">
+        <h2>1. Способы внедрения JavaScript в HTML</h2>
+        
+        <h3>1.1 Встроенный скрипт (inline)</h3>
+        <button onclick="alert('Это встроенный JavaScript!')">Нажми меня</button>
+        
+        <h3>1.2 Внутренний скрипт (internal)</h3>
+        <button onclick="showInternalMessage()">Нажми меня</button>
+        
+        <h3>1.3 Внешний скрипт (external)</h3>
+        <button onclick="externalMessage()">Нажми меня</button>
+        
+        <h3>1.4 JavaScript в атрибуте href</h3>
+        <a href="javascript:alert('JavaScript в атрибуте href!')" style="color: #3498db; text-decoration: none;">Кликни здесь</a>
+    </section>
+
+    <!-- Раздел 2: Операторы JavaScript -->
+    <section id="section2">
+        <h2>2. Операторы JavaScript</h2>
+        
+        <h3>2.1 if-else</h3>
+        <button onclick="checkAge()">Проверить возраст</button>
+        
+        <h3>2.2 switch</h3>
+        <button onclick="showDayOfWeek()">День недели</button>
+        
+        <h3>2.3 Цикл for</h3>
+        <button onclick="runForLoop()">Запустить цикл for</button>
+        <p id="forResult"></p>
+        
+        <h3>2.4 Цикл while</h3>
+        <button onclick="runWhileLoop()">Запустить цикл while</button>
+        <p id="whileResult"></p>
+        
+        <h3>2.5 Цикл do..while</h3>
+        <button onclick="runDoWhile()">Ввести число больше 10</button>
+        <p id="doWhileResult"></p>
+        
+        <h3>2.6 break</h3>
+        <button onclick="runBreakExample()">Пример с break</button>
+        <p id="breakResult"></p>
+        
+        <h3>2.7 continue</h3>
+        <button onclick="runContinueExample()">Пример с continue</button>
+        <p id="continueResult"></p>
+        
+        <h3>2.8 return</h3>
+        <button onclick="calculateSquare()">Вычислить квадрат числа</button>
+        <p id="squareResult"></p>
+    </section>
+
+    <!-- Раздел 3: Диалоговые окна -->
+    <section id="section3">
+        <h2>3. Диалоговые окна</h2>
+        
+        <h3>3.1 alert()</h3>
+        <button onclick="showAlert()">Показать alert</button>
+        
+        <h3>3.2 confirm()</h3>
+        <button onclick="showConfirm()">Показать confirm</button>
+        <p id="confirmResult"></p>
+        
+        <h3>3.3 prompt()</h3>
+        <button onclick="showPrompt()">Показать prompt</button>
+        <p id="promptResult"></p>
+        
+        <h3>Комбинированный пример</h3>
+        <button onclick="combinedExample()">Комбинированный пример</button>
+        <p id="combinedResult"></p>
+    </section>
+
+    <!-- Внутренний JavaScript -->
+    <script>
+        // 1.2 Внутренний скрипт
+        function showInternalMessage() {
+            alert('Это внутренний JavaScript!');
+        }
+
+        // 2.1 if-else
+        function checkAge() {
+            let age = prompt("Сколько вам лет?");
+            if (age >= 18) {
+                alert("Вы совершеннолетний!");
+            } else {
+                alert("Вы несовершеннолетний!");
+            }
+        }
+
+        // 2.2 switch
+        function showDayOfWeek() {
+            let day = prompt("Введите номер дня недели (1-7)");
+            switch(day) {
+                case '1': alert("Понедельник"); break;
+                case '2': alert("Вторник"); break;
+                case '3': alert("Среда"); break;
+                case '4': alert("Четверг"); break;
+                case '5': alert("Пятница"); break;
+                case '6': alert("Суббота"); break;
+                case '7': alert("Воскресенье"); break;
+                default: alert("Некорректный ввод");
+            }
+        }
+
+        // 2.3 for
+        function runForLoop() {
+            let result = "";
+            for (let i = 1; i <= 5; i++) {
+                result += i + " ";
+            }
+            document.getElementById("forResult").textContent = "Результат: " + result;
+        }
+
+        // 2.4 while
+        function runWhileLoop() {
+            let count = 1;
+            let result = "";
+            while (count <= 5) {
+                result += count + " ";
+                count++;
+            }
+            document.getElementById("whileResult").textContent = "Результат: " + result;
+        }
+
+        // 2.5 do..while
+        function runDoWhile() {
+            let num;
+            do {
+                num = prompt("Введите число больше 10");
+            } while (num <= 10);
+            document.getElementById("doWhileResult").textContent = "Вы ввели: " + num;
+        }
+
+        // 2.6 break
+        function runBreakExample() {
+            let result = "";
+            for (let i = 1; i <= 10; i++) {
+                if (i === 6) {
+                    break;
+                }
+                result += i + " ";
+            }
+            document.getElementById("breakResult").textContent = "Результат (прервано на 6): " + result;
+        }
+
+        // 2.7 continue
+        function runContinueExample() {
+            let result = "";
+            for (let i = 1; i <= 5; i++) {
+                if (i === 3) continue;
+                result += i + " ";
+            }
+            document.getElementById("continueResult").textContent = "Результат (пропущено 3): " + result;
+        }
+
+        // 2.8 return
+        function calculateSquare() {
+            let number = prompt("Введите число");
+            let result = square(number);
+            document.getElementById("squareResult").textContent = "Квадрат числа: " + result;
+        }
+
+        function square(x) {
+            return x * x;
+        }
+
+        // 3.1 alert
+        function showAlert() {
+            alert("Это простое сообщение для пользователя!");
+        }
+
+        // 3.2 confirm
+        function showConfirm() {
+            let isConfirmed = confirm("Вы уверены?");
+            document.getElementById("confirmResult").textContent = 
+                "Вы выбрали: " + (isConfirmed ? "Да" : "Нет");
+        }
+
+        // 3.3 prompt
+        function showPrompt() {
+            let name = prompt("Как вас зовут?", "Гость");
+            document.getElementById("promptResult").textContent = 
+                name ? "Привет, " + name + "!" : "Привет, Гость!";
+        }
+
+        // 3.4 Комбинированный пример
+        function combinedExample() {
+            let age = prompt("Сколько вам лет?");
+            if (confirm("Вы ввели " + age + ". Это правильно?")) {
+                document.getElementById("combinedResult").textContent = 
+                    "Спасибо за подтверждение! Ваш возраст: " + age;
+            } else {
+                age = prompt("Сколько вам лет?");
+                document.getElementById("combinedResult").textContent = 
+                    "Теперь вы ввели: " + age;
+            }
+        }
+    </script>
+
+    <!-- Внешний JavaScript -->
+    <script src="external.js"></script>
+</body>
+</html>
