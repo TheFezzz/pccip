@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 2: Document и DOM</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Задание 2: Работа с Document и DOM</h1>
+        
+        <div class="task-content" id="task2-content">
+            <h3>Исходные узлы:</h3> 
+            <div id="nodes-container">
+                <p id="node1">Узел №1 (этот элемент будет первым)</p>
+                <div id="node2">Узел №2 (обычный div-элемент)</div>
+                <img id="node3" src="image.jpg" alt="Узел №3 (изображение)">
+            </div>
+            
+            <div id="task2-result" class="result-area">
+                <h3>Результат выполнения:</h3>
+                <p>Через 5 секунд здесь появится информация о ширине документа</p>
+                <p>После загрузки страницы узел №3 будет скопирован и вставлен после узла №1</p>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-link">← Вернуться к списку заданий</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Задания (Вариант 71)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #db3434;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #b92929;
+            margin-top: 30px;
+            border-left: 4px solid #db3434;
+            padding-left: 10px;
+        }
+        .task {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button {
+            background-color: #db3434;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #b92929;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .result {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .error {
+            color: #e74c3c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Задание 1 -->
+    <div class="task">
+        <h2>Задание 1: Работа с объектом Date</h2>
+        <p>Вывести в диалоговое окно дату в формате секунды-часы.</p>
+        <button onclick="showDateTime()">Показать время</button>
+        <script>
+            function showDateTime() {
+                const now = new Date();
+                const seconds = now.getSeconds();
+                const hours = now.getHours();
+                alert(`Текущее время: ${seconds} секунд - ${hours} часов`);
+            }
+        </script>
+    </div>
+
+    <!-- Задание 2 -->
+    <div class="task">
+        <h2>Задание 2: Работа с операторами организации циклов</h2>
+        <p>Вывести Фамилию и Имя 71 раз (по номеру варианта).</p>
+        <div id="task2Result"></div>
+        <script>
+            const firstName = "Мартин";
+            const lastName = "Шикута";
+            const variant = 71;
+            let output = "";
+            
+            for (let i = 0; i < variant; i++) {
+                output += `${lastName} ${firstName}<br>`;
+            }
+            
+            document.getElementById("task2Result").innerHTML = output;
+        </script>
+    </div>
+
+    <!-- Задание 3 -->
+    <div class="task">
+        <h2>Задание 3: Работа с объектом Array</h2>
+        <p>Операции с массивом из 7 элементов.</p>
+        <div id="task3Result"></div>
+        <script>
+            // Создаем массив из 7 элементов
+            let array = [5, 12, 8, 3, 15, 7, 10];
+            let result = `Исходный массив: [${array.join(", ")}]<br>`;
+            
+            // Добавляем элемент в конец
+            array.push(20);
+            result += `После добавления 20: [${array.join(", ")}]<br>`;
+            
+            // Находим и удаляем минимальный элемент
+            const minIndex = array.indexOf(Math.min(...array));
+            const removedElement = array.splice(minIndex, 1)[0];
+            result += `Удален минимальный элемент ${removedElement}<br>`;
+            result += `Итоговый массив: [${array.join(", ")}]`;
+            
+            document.getElementById("task3Result").innerHTML = result;
+        </script>
+    </div>
+
+    <!-- Задание 4 -->
+    <div class="task">
+        <h2>Задание 4: Работа с объектом Math</h2>
+        <p>Расчет по формуле y = 7/(5x - 3) с параметрами a=0, b=7, c=5, d=-3</p>
+        <div id="task4Result"></div>
+        <script>
+            function calculateY(x) {
+                const a = 0;
+                const b = 7;
+                const c = 5;
+                const d = -3;
+                const denominator = c * x + d; // 5x - 3
+                
+                try {
+                    if (denominator === 0) {
+                        throw new Error("Деление на ноль (знаменатель равен 0)");
+                    }
+                    
+                    const y = b / denominator;
+                    return y;
+                } catch (error) {
+                    alert("Ошибка при x=" + x + ": " + error.message);
+                    return null;
+                }
+            }
+            
+            const xValues = [0.5, 0.6, 1.0, 1.5, 2.0];
+            let calculationResults = `
+                <h3>Результаты расчетов для y = 7/(5x - 3):</h3>
+                <table>
+                    <tr>
+                        <th>x</th>
+                        <th>y</th>
+                        <th>Примечание</th>
+                    </tr>
+            `;
+            
+            xValues.forEach(x => {
+                const result = calculateY(x);
+                if (result !== null) {
+                    calculationResults += `
+                        <tr>
+                            <td>${x}</td>
+                            <td>${result.toFixed(6)}</td>
+                            <td>${x === 0.6 ? '<span class="error">Проверка на x=0.6 (знаменатель = 0)</span>' : ''}</td>
+                        </tr>
+                    `;
+                } else {
+                    calculationResults += `
+                        <tr>
+                            <td>${x}</td>
+                            <td class="error">Ошибка</td>
+                            <td class="error">Деление на ноль</td>
+                        </tr>
+                    `;
+                }
+            });
+            
+            calculationResults += `</table>`;
+            document.getElementById("task4Result").innerHTML = calculationResults;
+        </script>
+    </div>
+
+    <!-- Задание 5 -->
+    <div class="task">
+        <h2>Задание 5: Работа со строками</h2>
+        <p>Операции со строками:</p>
+        <ul>
+            <li>S1: "Я люблю Беларусь"</li>
+            <li>S2: "Я учусь в Политехническом колледже"</li>
+        </ul>
+        <div id="task5Result"></div>
+        <script>
+            const s1 = "Я люблю Беларусь";
+            const s2 = "Я учусь в Политехническом колледже";
+            const variantNumber = 71;
+            
+            let stringResults = `
+                <h3>Результаты:</h3>
+                <table>
+                    <tr>
+                        <th>Задача</th>
+                        <th>Результат</th>
+                    </tr>
+                    <tr>
+                        <td>1. Длина строки S2</td>
+                        <td class="result">${s2.length} символов</td>
+                    </tr>
+                    <tr>
+                        <td>2. Строка S1 содержит слово "Беларусь"</td>
+                        <td class="result">${s1.includes("Беларусь") ? 'Да' : 'Нет'}</td>
+                    </tr>
+            `;
+            
+            // 3. n-ый символ в S2 и его ASCII-код (n = 71)
+            const charIndex = variantNumber - 1;
+            
+            if (charIndex < s2.length) {
+                const char = s2.charAt(charIndex);
+                const asciiCode = char.charCodeAt(0);
+                stringResults += `
+                    <tr>
+                        <td>3. ${variantNumber}-й символ в S2</td>
+                        <td class="result">Символ: '${char}' (ASCII: ${asciiCode})</td>
+                    </tr>
+                `;
+            } else {
+                stringResults += `
+                    <tr>
+                        <td>3. ${variantNumber}-й символ в S2</td>
+                        <td class="error">Строка слишком короткая (длина: ${s2.length})</td>
+                    </tr>
+                `;
+            }
+            
+            stringResults += `</table>`;
+            document.getElementById("task5Result").innerHTML = stringResults;
+        </script>
+    </div>
+</body>
+</html>

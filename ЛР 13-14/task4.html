@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 4: Информация о процессоре</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function showProcessorInfo() {
+            // Создаем новое окно
+            const infoWindow = window.open('', 'ProcessorInfo', 'width=500,height=300');
+            
+            // Получаем информацию о процессоре из userAgent
+            const userAgent = navigator.userAgent;
+            let processorInfo = "Точная информация о процессоре недоступна из соображений безопасности";
+            
+            // Пытаемся определить процессор по userAgent
+            if (userAgent.includes('Win64') || userAgent.includes('x64')) {
+                processorInfo = "64-битный процессор";
+            } else if (userAgent.includes('Win32') || userAgent.includes('x86')) {
+                processorInfo = "32-битный процессор";
+            }
+            
+            // Добавляем информацию о количестве ядер
+            if (navigator.hardwareConcurrency) {
+                processorInfo += `, ${navigator.hardwareConcurrency} ядер(а)`;
+            }
+            
+            // Функция для обновления информации
+            function updateInfo() {
+                if (infoWindow.closed) {
+                    clearInterval(intervalId);
+                    return;
+                }
+                
+                const currentTime = new Date().toLocaleTimeString();
+                infoWindow.document.body.innerHTML = `
+                    <h2>Информация о процессоре</h2>
+                    <p><strong>Тип процессора:</strong> ${processorInfo}</p>
+                    <p><strong>User Agent:</strong> ${navigator.userAgent}</p>
+                    <p><strong>Платформа:</strong> ${navigator.platform}</p>
+                    <p><strong>Последнее обновление:</strong> ${currentTime}</p>
+                    <p><em>Окно закроется автоматически через 1 минуту</em></p>
+                `;
+            }
+            
+            // Первое обновление
+            updateInfo();
+            
+            // Обновляем каждые 4 секунды
+            const intervalId = setInterval(updateInfo, 4000);
+            
+            // Автоматическое закрытие через 1 минуту
+            setTimeout(() => {
+                if (!infoWindow.closed) {
+                    infoWindow.close();
+                }
+            }, 60000);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Задание 4: Объектная модель браузера</h1>
+        <div class="task-content">
+            <button onclick="showProcessorInfo()" class="action-button">Показать информацию о процессоре</button>
+            
+        </div>
+        
+        <a href="index.html" class="back-link">← Вернуться к списку заданий</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Визитка</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Ponomar&family=Reggae+One&display=swap');
+
+p {
+    font-family: 'Molot', cursive;
+    color: rgb(38, 141, 141);
+}
+
+h1 {
+    font-family: 'Caveat', cursive;
+    color: rgb(71, 38, 141);
+}
+
+h2 {
+    font-family: 'Reggae+One', cursive;
+    color: rgb(141, 38, 86);
+}
+
+
+.block {
+    font-style: italic;
+}
+    </style>
+</head>
+<body>
+    
+    <img class="styled-image" src="img.jpg" alt="Фото" width="250">
+    <h1>Шикута Мартин</h1>
+    <p><strong>Должность:</strong> <em>Программист</em></p>
+    <p><strong>Уровень дохода:</strong> <em>1500 $</em></p>
+    <p><strong>Дата рождения:</strong> <em>21.08.2007</em></p>
+    <p><strong>Проживание:</strong> <em>г. Гродно</em></p>
+    <p><strong>Контакты:</strong></p>
+    <p>Телефон: <em>+375 (29) 804-80-85</em></p>
+    <p>Email: <em>martin.shikuta@gmail.com</em></p>
+
+    <h2>Ключевые знания и навыки</h2>
+    <ul class="lis">
+        <li>Языки программирования: Python, Java, C++, JavaScript</li>
+        <li>Алгоритмы и структуры данных</li>
+        <li>Базы данных: SQL, NoSQL</li>
+        <li>Сетевые технологии</li>
+        <li>Операционные системы</li>
+    </ul>
+
+    <h2>Образование</h2>
+    <p>2022 - Средняя школа №26 г. Гродно <a href="https://sh26grodno.schools.by">Сайт школы</a></p>
+    <p>2024 - Оператор ЭВМ <a href="http://ggpk.by">Сайт колледжа</a></p>
+
+    <h2>Аудио и Видео</h2>
+    <audio controls src="Destroy.mp3"></audio>
+    <video width="400" controls src="123.mp4"></video>
+
+    <h2>Форма</h2>
+    <form>
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" placeholder="Введите ваше имя"><br>
+        <label>Любимый цвет:</label><br>
+        <input type="radio" id="red" name="color" value="red"> <label for="red">Красный</label><br>
+        <input type="radio" id="green" name="color" value="green"> <label for="green">Зелёный</label><br>
+        <button>Отправить</button>
+    </form>
+
+    <h2>Таблица</h2>
+    <table>
+        <tr>
+            <td><b>Сотрудник</b></td>
+            <td><b>Зарплата</b></td>
+        </tr>
+        <tr>
+            <td>Шульга Сергей</td>
+            <td>750$</td>
+        </tr>
+        <tr>
+            <td>Юркевич Андрей</td>
+            <td>1200$</td>
+        </tr>
+    </table>
+    <img class="rotating-element" style=" background: linear-gradient(to right, rgb(0, 21, 255), rgb(68, 255, 0)); 
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    ">
+    <a href="#top">Наверх</a>
+</body>
+</html>

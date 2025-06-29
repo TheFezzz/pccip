@@ -1,0 +1,92 @@
+/* Общие стили для всех страниц */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3, h4 {
+    color: #2c3e50;
+}
+
+.task-description {
+    background-color: #e8f4fc;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #3498db;
+}
+
+.task-link {
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.task-link:hover {
+    background-color: #2980b9;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.action-button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.action-button:hover {
+    background-color: #27ae60;
+}
+
+.result-area {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: 1px dashed #ccc;
+}
+
+.code-example {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.notes {
+    background-color: #fffde7;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #ffd600;
+    margin-top: 20px;
+}

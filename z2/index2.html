@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="шаблон, верстка, flex, резиновая">
+    <title>ВАРИАНТ № 10</title>
+    <style>
+    .top-row {
+        display: flex;
+        width: 100%;
+    }
+
+    .bottom-row {
+        display: flex;
+        width: 100%;
+    }
+
+    .header {
+        width: 100px;
+        height: 100px;
+        background-color: #FF5733;
+    }
+
+    .menu {
+        width: 100px;
+        height: 100px;
+        background-color: #33FF57;
+    }
+
+    .sidebar {
+        flex-grow: 1;
+        height: 100px;
+        background-color: #33FFF5;
+    }
+
+    .navigation {
+        width: 100px;
+        height: 100px;
+        background-color: #3357FF;
+    }
+
+    .navigation img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .content {
+        width: 100px;
+        height: 100px;
+        background-color: #F033FF;
+    }
+</style>
+
+<div class="container">
+    <div class="top-row">
+        <div class="header">Шапка</div>
+        <div class="menu">Меню</div>
+        <div class="sidebar">Сайдбар</div>
+    </div>
+    <div class="bottom-row">
+        <div class="navigation"><img src="image.jpg" alt="Навигация"></div>
+        <div class="content">Контент</div>
+    </div>
+</div>
+
+</body>
+</html>

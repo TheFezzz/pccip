@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЛР8 - Валидация формы</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Дополнительные стили для валидации */
+        .error {
+            border-color: #ff3860 !important;
+        }
+        
+        .error-message {
+            color: #ff3860;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-value {
+            position: relative;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: #ff3860;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            top: 100%;
+            left: 0;
+            z-index: 10;
+            display: none;
+        }
+        
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 10px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #ff3860 transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item9">
+            <div class="delivery-form">
+                <h1>Добавить адрес доставки</h1>
+                
+                <div class="form-row">
+                    <div class="form-label">Имя получателя:</div>
+                    <div class="form-value">
+                        <input type="text" id="recipient-name" >
+                        <div class="error-message" id="name-error">Поле обязательно для заполнения</div>
+                        <div class="tooltip" id="name-tooltip">Введите имя получателя</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Страна/Регион:</div>
+                    <div class="form-value">
+                        <select id="country">
+                            <option value="">-- Выберите страну --</option>
+                            <option value="RU" selected>Russian Federation</option>
+                            <option value="US">United States</option>
+                            <option value="DE">Germany</option>
+                        </select>
+                        <div class="error-message" id="country-error">Пожалуйста, выберите страну</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Улица, дом, квартира:</div>
+                    <div class="form-value">
+                        <input type="text" id="address">
+                        <div class="error-message" id="address-error">Поле обязательно для заполнения</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Город:</div>
+                    <div class="form-value">
+                        <input type="text" id="city" >
+                        <div class="error-message" id="city-error">Поле обязательно для заполнения</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Почтовый индекс:</div>
+                    <div class="form-value">
+                        <input type="text" id="postal-code" >
+                        <div class="error-message" id="postal-error">Почтовый индекс должен содержать 6 цифр</div>
+                    </div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="no-postal-code">
+                    <label for="no-postal-code">В моём адресе нет почтового кода.</label>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-label">Мобильный телефон:</div>
+                    <div class="form-value">
+                        <div class="phone-input">
+                            <input type="text" id="phone-code" maxlength="3" placeholder="Код">
+                            <input type="text" id="phone-number1" maxlength="3" placeholder="XXX">
+                            <input type="text" id="phone-number2" maxlength="7" placeholder="XXXXXXX">
+                        </div>
+                        <div class="error-message" id="phone-error">Заполните все поля телефона</div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="save-btn" id="submit-btn">Save</button>
+                    <button class="cancel-btn" type="button">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.delivery-form');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            // Элементы формы
+            const nameInput = document.getElementById('recipient-name');
+            const countrySelect = document.getElementById('country');
+            const addressInput = document.getElementById('address');
+            const cityInput = document.getElementById('city');
+            const postalInput = document.getElementById('postal-code');
+            const noPostalCheck = document.getElementById('no-postal-code');
+            const phoneCode = document.getElementById('phone-code');
+            const phoneNum1 = document.getElementById('phone-number1');
+            const phoneNum2 = document.getElementById('phone-number2');
+            
+            // Валидация при отправке формы
+            submitBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                
+                // Сбрасываем ошибки
+                resetErrors();
+                
+                // Проверка имени
+                if (!nameInput.value.trim()) {
+                    showError(nameInput, 'name-error', 'Поле обязательно для заполнения');
+                    isValid = false;
+                } else if (nameInput.value.trim().length < 2) {
+                    showError(nameInput, 'name-error', 'Имя слишком короткое');
+                    isValid = false;
+                }
+                
+                // Проверка страны
+                if (!countrySelect.value) {
+                    showError(countrySelect, 'country-error');
+                    isValid = false;
+                }
+                
+                // Проверка адреса
+                if (!addressInput.value.trim()) {
+                    showError(addressInput, 'address-error');
+                    isValid = false;
+                }
+                
+                // Проверка города
+                if (!cityInput.value.trim()) {
+                    showError(cityInput, 'city-error');
+                    isValid = false;
+                }
+                
+                // Проверка почтового индекса
+                if (!noPostalCheck.checked) {
+                    if (!postalInput.value.trim()) {
+                        showError(postalInput, 'postal-error', 'Поле обязательно для заполнения');
+                        isValid = false;
+                    } else if (!/^\d{6}$/.test(postalInput.value)) {
+                        showError(postalInput, 'postal-error', 'Почтовый индекс должен содержать 6 цифр');
+                        isValid = false;
+                    }
+                }
+                
+                // Проверка телефона
+                if (!phoneCode.value.trim() || !phoneNum1.value.trim() || !phoneNum2.value.trim()) {
+                    showError(phoneCode, 'phone-error');
+                    showError(phoneNum1, 'phone-error');
+                    showError(phoneNum2, 'phone-error');
+                    isValid = false;
+                } else if (!/^\d{3}$/.test(phoneNum1.value) || !/^\d{7}$/.test(phoneNum2.value)) {
+                    showError(phoneNum1, 'phone-error', 'Номер должен быть в формате XXX-XXXXXXX');
+                    showError(phoneNum2, 'phone-error', 'Номер должен быть в формате XXX-XXXXXXX');
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    alert('Форма успешно проверена и готова к отправке!');
+                    // form.submit(); // Раскомментировать для реальной отправки
+                }
+            });
+            
+            // Функция показа ошибки
+            function showError(input, errorId, message = null) {
+                input.classList.add('error');
+                const errorElement = document.getElementById(errorId);
+                
+                if (message) {
+                    errorElement.textContent = message;
+                }
+                
+                errorElement.style.display = 'block';
+                
+                // Показываем подсказку при фокусе
+                input.addEventListener('focus', function() {
+                    const tooltip = document.getElementById(input.id + '-tooltip');
+                    if (tooltip) {
+                        tooltip.style.display = 'block';
+                    }
+                });
+                
+                // Скрываем подсказку при потере фокуса
+                input.addEventListener('blur', function() {
+                    const tooltip = document.getElementById(input.id + '-tooltip');
+                    if (tooltip) {
+                        tooltip.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Сброс ошибок
+            function resetErrors() {
+                document.querySelectorAll('.error').forEach(el => {
+                    el.classList.remove('error');
+                });
+                
+                document.querySelectorAll('.error-message').forEach(el => {
+                    el.style.display = 'none';
+                });
+            }
+            
+            // Валидация в реальном времени для почтового индекса
+            postalInput.addEventListener('input', function() {
+                if (!/^\d*$/.test(this.value)) {
+                    this.value = this.value.replace(/[^\d]/g, '');
+                }
+                
+                if (this.value.length > 6) {
+                    this.value = this.value.slice(0, 6);
+                }
+            });
+            
+            // Валидация в реальном времени для телефона
+            phoneNum1.addEventListener('input', function() {
+                if (!/^\d*$/.test(this.value)) {
+                    this.value = this.value.replace(/[^\d]/g, '');
+                }
+                
+                if (this.value.length > 3) {
+                    this.value = this.value.slice(0, 3);
+                }
+            });
+            
+            phoneNum2.addEventListener('input', function() {
+                if (!/^\d*$/.test(this.value)) {
+                    this.value = this.value.replace(/[^\d]/g, '');
+                }
+                
+                if (this.value.length > 7) {
+                    this.value = this.value.slice(0, 7);
+                }
+            });
+            
+            // Обработка чекбокса "нет почтового индекса"
+            noPostalCheck.addEventListener('change', function() {
+                if (this.checked) {
+                    postalInput.disabled = true;
+                    postalInput.classList.remove('error');
+                    document.getElementById('postal-error').style.display = 'none';
+                } else {
+                    postalInput.disabled = false;
+                }
+            });
+        });
+    </script>
+    <a href="index.html" class="back-link">← Вернуться к списку заданий</a>
+</body>
+</html>
