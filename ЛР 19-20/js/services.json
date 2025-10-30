@@ -1,0 +1,94 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Construction",
+      "description": "Full construction services from planning to completion",
+      "price": 50000,
+      "duration": "3-6 months",
+      "image": "./img/our1.svg",
+      "category": "construction"
+    },
+    {
+      "id": 2,
+      "name": "Project Development",
+      "description": "Professional project management and development",
+      "price": 35000,
+      "duration": "2-4 months",
+      "image": "./img/our2.svg",
+      "category": "development"
+    },
+    {
+      "id": 3,
+      "name": "Interior Design",
+      "description": "Creative interior design solutions",
+      "price": 25000,
+      "duration": "1-2 months",
+      "image": "./img/our3.svg",
+      "category": "design"
+    },
+    {
+      "id": 4,
+      "name": "Repairs",
+      "description": "Quality repair and maintenance services",
+      "price": 15000,
+      "duration": "2-8 weeks",
+      "image": "./img/our1.svg",
+      "category": "repairs"
+    },
+    {
+      "id": 5,
+      "name": "Consultation",
+      "description": "Expert construction consultation",
+      "price": 5000,
+      "duration": "1-2 weeks",
+      "image": "./img/our2.svg",
+      "category": "consultation"
+    },
+    {
+      "id": 6,
+      "name": "Renovation",
+      "description": "Complete building renovation services",
+      "price": 45000,
+      "duration": "2-5 months",
+      "image": "./img/our3.svg",
+      "category": "renovation"
+    },
+    {
+      "id": 7,
+      "name": "Architecture",
+      "description": "Architectural design and planning",
+      "price": 30000,
+      "duration": "1-3 months",
+      "image": "./img/our1.svg",
+      "category": "design"
+    },
+    {
+      "id": 8,
+      "name": "Landscaping",
+      "description": "Professional landscaping services",
+      "price": 20000,
+      "duration": "1-2 months",
+      "image": "./img/our2.svg",
+      "category": "construction"
+    },
+    {
+      "id": 9,
+      "name": "Inspection",
+      "description": "Building inspection and assessment",
+      "price": 8000,
+      "duration": "1 week",
+      "image": "./img/our3.svg",
+      "category": "consultation"
+    },
+    {
+      "id": 10,
+      "name": "Custom Solutions",
+      "description": "Tailored construction solutions",
+      "price": 60000,
+      "duration": "4-8 months",
+      "image": "./img/our1.svg",
+      "category": "construction"
+    }
+  ]
+}

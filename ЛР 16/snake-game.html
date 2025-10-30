@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Змейка - ООП игра</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .game-container {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        
+        #game-canvas {
+            border: 2px solid #333;
+            background-color: #f0f0f0;
+            margin: 10px 0;
+        }
+        
+        .game-controls {
+            margin: 15px 0;
+        }
+        
+        .game-stats {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #2c3e50;
+        }
+        
+        .game-over {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 24px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Змейка - Демонстрация ООП</h1>
+        
+        <div class="task-description">
+            <p>Эта игра демонстрирует принципы объектно-ориентированного программирования:</p>
+            <ul>
+                <li><strong>Инкапсуляция:</strong> Каждый класс имеет свои свойства и методы</li>
+                <li><strong>Наследование:</strong> Игровые объекты наследуют общие характеристики</li>
+                <li><strong>Полиморфизм:</strong> Объекты могут обрабатываться единообразно</li>
+                <li><strong>Абстракция:</strong> Сложная логика скрыта за простыми интерфейсами</li>
+            </ul>
+        </div>
+        
+        <div class="game-container">
+            <div class="game-stats">
+                Счет: <span id="score">0</span>
+            </div>
+            
+            <canvas id="game-canvas" width="400" height="400"></canvas>
+            
+            <div class="game-over" id="game-over">
+                Игра окончена! Нажмите "Новая игра" чтобы начать снова.
+            </div>
+            
+            <div class="game-controls">
+                <button id="start-btn" class="action-button">Новая игра</button>
+                <button id="pause-btn" class="action-button" disabled>Пауза</button>
+            </div>
+            
+            <div class="game-instructions">
+                <p>Управление: стрелки ← ↑ → ↓</p>
+                <p>Съедайте красную еду чтобы увеличить счет и длину змейки</p>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-link">← Вернуться к списку заданий</a>
+    </div>
+
+    <script>
+        // ООП КЛАССЫ ДЛЯ ИГРЫ "ЗМЕЙКА"
+        
+        // Базовый класс для игровых объектов
+        class GameObject {
+            constructor(x, y, size, color) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.color = color;
+            }
+            
+            draw(ctx) {
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+            }
+        }
+        
+        // Класс еды (наследуется от GameObject)
+        class Food extends GameObject {
+            constructor(canvasSize, cellSize) {
+                const x = Math.floor(Math.random() * (canvasSize / cellSize)) * cellSize;
+                const y = Math.floor(Math.random() * (canvasSize / cellSize)) * cellSize;
+                super(x, y, cellSize, '#e74c3c'); // Красный цвет для еды
+            }
+            
+            // Переопределяем метод draw для круглой еды
+            draw(ctx) {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x + this.size / 2, this.y + this.size / 2, this.size / 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            // Генерация новой позиции
+            respawn(canvasSize, cellSize, snake) {
+                let newX, newY;
+                let onSnake;
+                
+                // Убеждаемся, что еда не появляется на змейке
+                do {
+                    newX = Math.floor(Math.random() * (canvasSize / cellSize)) * cellSize;
+                    newY = Math.floor(Math.random() * (canvasSize / cellSize)) * cellSize;
+                    
+                    onSnake = snake.some(segment => segment.x === newX && segment.y === newY);
+                } while (onSnake);
+                
+                this.x = newX;
+                this.y = newY;
+            }
+        }
+        
+        // Класс змейки
+        class Snake {
+            constructor(cellSize) {
+                this.cellSize = cellSize;
+                this.reset();
+            }
+            
+            reset() {
+                this.segments = [
+                    { x: 5 * this.cellSize, y: 5 * this.cellSize }, // Голова
+                    { x: 4 * this.cellSize, y: 5 * this.cellSize }, // Тело
+                    { x: 3 * this.cellSize, y: 5 * this.cellSize }  // Тело
+                ];
+                this.direction = 'right';
+                this.nextDirection = 'right';
+                this.grow = false;
+            }
+            
+            changeDirection(newDirection) {
+                // Предотвращаем разворот на 180 градусов
+                const opposites = {
+                    'up': 'down',
+                    'down': 'up',
+                    'left': 'right',
+                    'right': 'left'
+                };
+                
+                if (newDirection !== opposites[this.direction]) {
+                    this.nextDirection = newDirection;
+                }
+            }
+            
+            move() {
+                this.direction = this.nextDirection;
+                
+                // Сохраняем текущую голову
+                const head = { ...this.segments[0] };
+                
+                // Двигаем голову в зависимости от направления
+                switch (this.direction) {
+                    case 'up': head.y -= this.cellSize; break;
+                    case 'down': head.y += this.cellSize; break;
+                    case 'left': head.x -= this.cellSize; break;
+                    case 'right': head.x += this.cellSize; break;
+                }
+                
+                // Добавляем новую голову
+                this.segments.unshift(head);
+                
+                // Если не нужно расти, удаляем хвост
+                if (!this.grow) {
+                    this.segments.pop();
+                } else {
+                    this.grow = false;
+                }
+            }
+            
+            checkCollision(canvasSize) {
+                const head = this.segments[0];
+                
+                // Столкновение со стеной
+                if (head.x < 0 || head.y < 0 || 
+                    head.x >= canvasSize || head.y >= canvasSize) {
+                    return true;
+                }
+                
+                // Столкновение с собой (начиная со второго сегмента)
+                for (let i = 1; i < this.segments.length; i++) {
+                    if (head.x === this.segments[i].x && head.y === this.segments[i].y) {
+                        return true;
+                    }
+                }
+                
+                return false;
+            }
+            
+            checkFoodCollision(food) {
+                const head = this.segments[0];
+                return head.x === food.x && head.y === food.y;
+            }
+            
+            draw(ctx) {
+                // Рисуем голову другим цветом
+                ctx.fillStyle = '#2c3e50';
+                ctx.fillRect(this.segments[0].x, this.segments[0].y, this.cellSize, this.cellSize);
+                
+                // Рисуем тело
+                ctx.fillStyle = '#3498db';
+                for (let i = 1; i < this.segments.length; i++) {
+                    ctx.fillRect(this.segments[i].x, this.segments[i].y, this.cellSize, this.cellSize);
+                }
+            }
+        }
+        
+        // Главный класс игры
+        class SnakeGame {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.cellSize = 20;
+                this.canvasSize = this.canvas.width;
+                
+                this.snake = new Snake(this.cellSize);
+                this.food = new Food(this.canvasSize, this.cellSize);
+                
+                this.score = 0;
+                this.isRunning = false;
+                this.isPaused = false;
+                this.gameLoop = null;
+                
+                this.setupEventListeners();
+            }
+            
+            setupEventListeners() {
+                // Управление с клавиатуры
+                document.addEventListener('keydown', (e) => {
+                    if (this.isPaused) return;
+                    
+                    switch (e.key) {
+                        case 'ArrowUp': this.snake.changeDirection('up'); break;
+                        case 'ArrowDown': this.snake.changeDirection('down'); break;
+                        case 'ArrowLeft': this.snake.changeDirection('left'); break;
+                        case 'ArrowRight': this.snake.changeDirection('right'); break;
+                    }
+                });
+                
+                // Кнопки управления
+                document.getElementById('start-btn').addEventListener('click', () => {
+                    this.startGame();
+                });
+                
+                document.getElementById('pause-btn').addEventListener('click', () => {
+                    this.togglePause();
+                });
+            }
+            
+            startGame() {
+                if (this.isRunning) {
+                    this.resetGame();
+                }
+                
+                this.isRunning = true;
+                this.isPaused = false;
+                document.getElementById('game-over').style.display = 'none';
+                document.getElementById('pause-btn').disabled = false;
+                
+                this.gameLoop = setInterval(() => this.update(), 150);
+            }
+            
+            resetGame() {
+                this.snake.reset();
+                this.food.respawn(this.canvasSize, this.cellSize, this.snake.segments);
+                this.score = 0;
+                document.getElementById('score').textContent = '0';
+            }
+            
+            togglePause() {
+                this.isPaused = !this.isPaused;
+                document.getElementById('pause-btn').textContent = 
+                    this.isPaused ? 'Продолжить' : 'Пауза';
+            }
+            
+            update() {
+                if (this.isPaused) return;
+                
+                this.snake.move();
+                
+                // Проверка столкновений
+                if (this.snake.checkCollision(this.canvasSize)) {
+                    this.gameOver();
+                    return;
+                }
+                
+                // Проверка съедания еды
+                if (this.snake.checkFoodCollision(this.food)) {
+                    this.snake.grow = true;
+                    this.food.respawn(this.canvasSize, this.cellSize, this.snake.segments);
+                    this.score += 10;
+                    document.getElementById('score').textContent = this.score;
+                }
+                
+                this.draw();
+            }
+            
+            draw() {
+                // Очищаем canvas
+                this.ctx.clearRect(0, 0, this.canvasSize, this.canvasSize);
+                
+                // Рисуем сетку (опционально)
+                this.ctx.strokeStyle = '#ddd';
+                this.ctx.lineWidth = 0.5;
+                
+                for (let x = 0; x <= this.canvasSize; x += this.cellSize) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(x, 0);
+                    this.ctx.lineTo(x, this.canvasSize);
+                    this.ctx.stroke();
+                }
+                
+                for (let y = 0; y <= this.canvasSize; y += this.cellSize) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(0, y);
+                    this.ctx.lineTo(this.canvasSize, y);
+                    this.ctx.stroke();
+                }
+                
+                // Рисуем игровые объекты
+                this.food.draw(this.ctx);
+                this.snake.draw(this.ctx);
+            }
+            
+            gameOver() {
+                clearInterval(this.gameLoop);
+                this.isRunning = false;
+                document.getElementById('game-over').style.display = 'block';
+                document.getElementById('pause-btn').disabled = true;
+            }
+        }
+        
+        // Инициализация игры при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            const game = new SnakeGame('game-canvas');
+        });
+    </script>
+</body>
+</html>

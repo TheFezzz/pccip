@@ -1,0 +1,29 @@
+/* Стили для Drag&Drop */
+.project-3__items[draggable="true"] {
+    cursor: grab;
+}
+
+.project-3__items[draggable="true"]:active {
+    cursor: grabbing;
+}
+
+/* Стили для таймера */
+#countdown {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Адаптивность для таймера */
+@media (max-width: 767px) {
+    #countdown-timer {
+        top: 80px;
+        right: 10px;
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    #countdown {
+        font-size: 18px;
+    }
+}

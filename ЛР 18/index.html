@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма с валидацией и регулярными выражениями</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input:invalid {
+            border-color: #e74c3c;
+        }
+        
+        input:valid {
+            border-color: #2ecc71;
+        }
+        
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input, .radio-item input {
+            margin-right: 8px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        #resetBtn {
+            background-color: #95a5a6;
+        }
+        
+        #resetBtn:hover {
+            background-color: #7f8c8d;
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .success {
+            color: #2ecc71;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .results {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .regex-demo {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+        
+        .regex-test {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .regex-result {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .valid {
+            color: #2ecc71;
+        }
+        
+        .invalid {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Пользовательская форма с валидацией</h1>
+    
+    <div class="form-container">
+        <form id="userForm" novalidate>
+            <div class="form-group">
+                <label for="name">Имя (обязательное поле):</label>
+                <input type="text" id="name" name="name" required minlength="2" maxlength="30">
+                <div class="error" id="nameError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email (обязательное поле):</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error" id="emailError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Телефон (формат: +7-XXX-XXX-XX-XX):</label>
+                <input type="tel" id="phone" name="phone" pattern="\+7-\d{3}-\d{3}-\d{2}-\d{2}">
+                <div class="error" id="phoneError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label>Выберите пол:</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Мужской</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Женский</label>
+                    </div>
+                </div>
+                <div class="error" id="genderError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="country">Страна:</label>
+                <select id="country" name="country">
+                    <option value="">-- Выберите страну --</option>
+                    <option value="ru">Россия</option>
+                    <option value="kz">Казахстан</option>
+                    <option value="by">Беларусь</option>
+                    <option value="other">Другая</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Интересы (выберите хотя бы один):</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="sports" name="interests" value="sports">
+                        <label for="sports">Спорт</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="music" name="interests" value="music">
+                        <label for="music">Музыка</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="books" name="interests" value="books">
+                        <label for="books">Книги</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="travel" name="interests" value="travel">
+                        <label for="travel">Путешествия</label>
+                    </div>
+                </div>
+                <div class="error" id="interestsError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="comments">Комментарии:</label>
+                <textarea id="comments" name="comments" rows="4"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit">Отправить форму</button>
+                <button type="button" id="resetBtn">Сбросить форму</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="results" id="results">
+        <h2>Данные формы:</h2>
+        <div id="formData"></div>
+    </div>
+    
+    <div class="regex-demo">
+        <h2>Демонстрация работы с регулярными выражениями</h2>
+        
+        <div class="regex-test">
+            <h3>1. Проверка email с помощью test()</h3>
+            <input type="text" id="emailTest" placeholder="Введите email для проверки" style="width: 300px;">
+            <button id="testEmailBtn">Проверить</button>
+            <div class="regex-result" id="emailTestResult"></div>
+        </div>
+        
+        <div class="regex-test">
+            <h3>2. Поиск всех чисел в тексте с помощью match()</h3>
+            <textarea id="numberText" placeholder="Введите текст с числами" rows="3" style="width: 100%;"></textarea>
+            <button id="findNumbersBtn">Найти числа</button>
+            <div class="regex-result" id="numbersResult"></div>
+        </div>
+        
+        <div class="regex-test">
+            <h3>3. Замена всех цифр на символ '*' с помощью replace()</h3>
+            <input type="text" id="replaceText" placeholder="Введите текст с цифрами" style="width: 300px;">
+            <button id="replaceDigitsBtn">Заменить цифры</button>
+            <div class="regex-result" id="replaceResult"></div>
+        </div>
+        
+        <div class="regex-test">
+            <h3>4. Разделение текста по запятым с помощью split()</h3>
+            <input type="text" id="splitText" placeholder="Введите текст через запятые" style="width: 300px;">
+            <button id="splitTextBtn">Разделить</button>
+            <div class="regex-result" id="splitResult"></div>
+        </div>
+        
+        <div class="regex-test">
+            <h3>5. Поиск позиции первого вхождения слова с помощью search()</h3>
+            <input type="text" id="searchText" placeholder="Введите текст для поиска" style="width: 300px;">
+            <input type="text" id="searchWord" placeholder="Слово для поиска" style="width: 200px;">
+            <button id="searchWordBtn">Найти позицию</button>
+            <div class="regex-result" id="searchResult"></div>
+        </div>
+    </div>
+
+    <script>
+        // Задание 1: Получение данных из полей формы
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Валидация формы (Задание 2)
+            if (validateForm()) {
+                // Получение данных из формы
+                const formData = new FormData(this);
+                const data = {};
+                
+                // Обработка текстовых полей
+                data.name = document.getElementById('name').value;
+                data.email = document.getElementById('email').value;
+                data.phone = document.getElementById('phone').value;
+                data.country = document.getElementById('country').value;
+                data.comments = document.getElementById('comments').value;
+                
+                // Обработка переключателей (радио-кнопки)
+                const genderRadios = document.querySelectorAll('input[name="gender"]');
+                for (const radio of genderRadios) {
+                    if (radio.checked) {
+                        data.gender = radio.value;
+                        break;
+                    }
+                }
+                
+                // Обработка флажков (чекбоксы)
+                const interestCheckboxes = document.querySelectorAll('input[name="interests"]:checked');
+                data.interests = Array.from(interestCheckboxes).map(cb => cb.value);
+                
+                // Вывод данных
+                displayFormData(data);
+            }
+        });
+        
+        // Функция для отображения данных формы
+        function displayFormData(data) {
+            const resultsDiv = document.getElementById('results');
+            const formDataDiv = document.getElementById('formData');
+            
+            let html = '<ul>';
+            for (const key in data) {
+                if (data[key] !== undefined && data[key] !== '') {
+                    html += `<li><strong>${key}:</strong> ${Array.isArray(data[key]) ? data[key].join(', ') : data[key]}</li>`;
+                }
+            }
+            html += '</ul>';
+            
+            formDataDiv.innerHTML = html;
+            resultsDiv.style.display = 'block';
+        }
+        
+        // Сброс формы
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            document.getElementById('userForm').reset();
+            document.getElementById('results').style.display = 'none';
+            clearErrors();
+        });
+        
+        // Задание 2: Валидация формы
+        function validateForm() {
+            let isValid = true;
+            clearErrors();
+            
+            // Валидация имени
+            const name = document.getElementById('name').value.trim();
+            if (name === '') {
+                showError('nameError', 'Имя является обязательным полем');
+                isValid = false;
+            } else if (name.length < 2) {
+                showError('nameError', 'Имя должно содержать не менее 2 символов');
+                isValid = false;
+            }
+            
+            // Валидация email с использованием регулярного выражения
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '') {
+                showError('emailError', 'Email является обязательным полем');
+                isValid = false;
+            } else if (!emailRegex.test(email)) {
+                showError('emailError', 'Введите корректный email адрес');
+                isValid = false;
+            }
+            
+            // Валидация телефона с использованием регулярного выражения
+            const phone = document.getElementById('phone').value.trim();
+            const phoneRegex = /^\+7-\d{3}-\d{3}-\d{2}-\d{2}$/;
+            if (phone !== '' && !phoneRegex.test(phone)) {
+                showError('phoneError', 'Телефон должен быть в формате +7-XXX-XXX-XX-XX');
+                isValid = false;
+            }
+            
+            // Валидация переключателя пола
+            const genderSelected = document.querySelector('input[name="gender"]:checked');
+            if (!genderSelected) {
+                showError('genderError', 'Выберите пол');
+                isValid = false;
+            }
+            
+            // Валидация флажков интересов
+            const interestsSelected = document.querySelectorAll('input[name="interests"]:checked');
+            if (interestsSelected.length === 0) {
+                showError('interestsError', 'Выберите хотя бы один интерес');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        // Функции для работы с ошибками
+        function showError(elementId, message) {
+            document.getElementById(elementId).textContent = message;
+        }
+        
+        function clearErrors() {
+            const errorElements = document.querySelectorAll('.error');
+            errorElements.forEach(element => {
+                element.textContent = '';
+            });
+        }
+        
+        // Задание 3: Работа с регулярными выражениями
+        
+        // 1. Проверка email с помощью test()
+        document.getElementById('testEmailBtn').addEventListener('click', function() {
+            const email = document.getElementById('emailTest').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const resultElement = document.getElementById('emailTestResult');
+            
+            if (emailRegex.test(email)) {
+                resultElement.textContent = 'Email валиден';
+                resultElement.className = 'regex-result valid';
+            } else {
+                resultElement.textContent = 'Email невалиден';
+                resultElement.className = 'regex-result invalid';
+            }
+        });
+        
+        // 2. Поиск всех чисел в тексте с помощью match()
+        document.getElementById('findNumbersBtn').addEventListener('click', function() {
+            const text = document.getElementById('numberText').value;
+            const numbersRegex = /\d+/g; // глобальный поиск всех чисел
+            const numbers = text.match(numbersRegex);
+            const resultElement = document.getElementById('numbersResult');
+            
+            if (numbers) {
+                resultElement.textContent = `Найдены числа: ${numbers.join(', ')}`;
+                resultElement.className = 'regex-result valid';
+            } else {
+                resultElement.textContent = 'Числа не найдены';
+                resultElement.className = 'regex-result invalid';
+            }
+        });
+        
+        // 3. Замена всех цифр на символ '*' с помощью replace()
+        document.getElementById('replaceDigitsBtn').addEventListener('click', function() {
+            const text = document.getElementById('replaceText').value;
+            const digitsRegex = /\d/g; // поиск всех цифр
+            const replacedText = text.replace(digitsRegex, '*');
+            const resultElement = document.getElementById('replaceResult');
+            
+            resultElement.textContent = `Результат: ${replacedText}`;
+            resultElement.className = 'regex-result';
+        });
+        
+        // 4. Разделение текста по запятым с помощью split()
+        document.getElementById('splitTextBtn').addEventListener('click', function() {
+            const text = document.getElementById('splitText').value;
+            const splitRegex = /\s*,\s*/; // разделение по запятым с возможными пробелами
+            const parts = text.split(splitRegex);
+            const resultElement = document.getElementById('splitResult');
+            
+            resultElement.textContent = `Разделенные части: [${parts.join('], [')}]`;
+            resultElement.className = 'regex-result';
+        });
+        
+        // 5. Поиск позиции первого вхождения слова с помощью search()
+        document.getElementById('searchWordBtn').addEventListener('click', function() {
+            const text = document.getElementById('searchText').value;
+            const word = document.getElementById('searchWord').value;
+            const wordRegex = new RegExp(word, 'i'); // регистронезависимый поиск
+            const position = text.search(wordRegex);
+            const resultElement = document.getElementById('searchResult');
+            
+            if (position !== -1) {
+                resultElement.textContent = `Слово найдено на позиции: ${position}`;
+                resultElement.className = 'regex-result valid';
+            } else {
+                resultElement.textContent = 'Слово не найдено';
+                resultElement.className = 'regex-result invalid';
+            }
+        });
+    </script>
+</body>
+</html>

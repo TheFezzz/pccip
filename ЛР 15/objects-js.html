@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Объекты в JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .output {
+            background-color: #e9e9e9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            min-height: 100px;
+        }
+        .section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Объекты в JavaScript</h1>
+    
+    <div class="section">
+        <h2>1. Создание объекта</h2>
+        <div class="container">
+            <pre><code>let book = {
+    title: "JavaScript для начинающих",
+    author: "Иванов И.И.",
+    year: 2023,
+    pages: 350,
+    getInfo: function() {
+        return `${this.title}, автор: ${this.author}, ${this.year} год, ${this.pages} стр.`;
+    }
+};</code></pre>
+            <button onclick="demoCreateObject()">Создать объект</button>
+            <div id="output1" class="output"></div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>2. Доступ к свойствам объекта</h2>
+        <div class="container">
+            <button onclick="demoAccessProperties()">Показать свойства</button>
+            <div id="output2" class="output"></div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>3. Добавление и удаление свойств</h2>
+        <div class="container">
+            <button onclick="demoAddProperty()">Добавить свойство</button>
+            <button onclick="demoDeleteProperty()">Удалить свойство</button>
+            <div id="output3" class="output"></div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>4. Проверка существования свойства</h2>
+        <div class="container">
+            <button onclick="demoCheckProperty()">Проверить свойства</button>
+            <div id="output4" class="output"></div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>5. Перебор свойств объекта</h2>
+        <div class="container">
+            <button onclick="demoIterateProperties()">Перебрать свойства</button>
+            <div id="output5" class="output"></div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>6. Практический пример: Управление библиотекой</h2>
+        <div class="container">
+            <button onclick="demoLibrary()">Запустить пример библиотеки</button>
+            <div id="output6" class="output"></div>
+        </div>
+    </div>
+
+    <script>
+        // Глобальный объект для демонстрации
+        let book;
+        
+        // 1. Создание объекта
+        function demoCreateObject() {
+            book = {
+                title: "JavaScript для начинающих",
+                author: "Иванов И.И.",
+                year: 2023,
+                pages: 350,
+                getInfo: function() {
+                    return `${this.title}, автор: ${this.author}, ${this.year} год, ${this.pages} стр.`;
+                }
+            };
+            
+            document.getElementById("output1").innerHTML = 
+                "Объект 'book' создан:<br>" + book.getInfo();
+        }
+        
+        // 2. Доступ к свойствам объекта
+        function demoAccessProperties() {
+            if (!book) {
+                document.getElementById("output2").innerHTML = 
+                    "Сначала создайте объект!";
+                return;
+            }
+            
+            let output = "Доступ к свойствам:<br>";
+            output += "book.title: " + book.title + "<br>";
+            output += "book['author']: " + book['author'] + "<br>";
+            output += "book.getInfo(): " + book.getInfo();
+            
+            document.getElementById("output2").innerHTML = output;
+        }
+        
+        // 3. Добавление и удаление свойств
+        function demoAddProperty() {
+            if (!book) {
+                document.getElementById("output3").innerHTML = 
+                    "Сначала создайте объект!";
+                return;
+            }
+            
+            // Добавляем новое свойство
+            book.genre = "Программирование";
+            
+            document.getElementById("output3").innerHTML = 
+                "Добавлено свойство 'genre': " + book.genre + 
+                "<br>Текущий объект: " + JSON.stringify(book, null, 2);
+        }
+        
+        function demoDeleteProperty() {
+            if (!book) {
+                document.getElementById("output3").innerHTML = 
+                    "Сначала создайте объект!";
+                return;
+            }
+            
+            // Удаляем свойство
+            if (book.genre) {
+                delete book.genre;
+                document.getElementById("output3").innerHTML = 
+                    "Свойство 'genre' удалено.<br>Текущий объект: " + 
+                    JSON.stringify(book, null, 2);
+            } else {
+                document.getElementById("output3").innerHTML = 
+                    "Свойство 'genre' не существует. Сначала добавьте его.";
+            }
+        }
+        
+        // 4. Проверка существования свойства
+        function demoCheckProperty() {
+            if (!book) {
+                document.getElementById("output4").innerHTML = 
+                    "Сначала создайте объект!";
+                return;
+            }
+            
+            let output = "Проверка свойств:<br>";
+            output += "'title' in book: " + ('title' in book) + "<br>";
+            output += "book.hasOwnProperty('author'): " + book.hasOwnProperty('author') + "<br>";
+            output += "'genre' in book: " + ('genre' in book) + "<br>";
+            output += "book.hasOwnProperty('publisher'): " + book.hasOwnProperty('publisher');
+            
+            document.getElementById("output4").innerHTML = output;
+        }
+        
+        // 5. Перебор свойств объекта
+        function demoIterateProperties() {
+            if (!book) {
+                document.getElementById("output5").innerHTML = 
+                    "Сначала создайте объект!";
+                return;
+            }
+            
+            let output = "Перебор свойств объекта:<br>";
+            for (let key in book) {
+                // Пропускаем методы
+                if (typeof book[key] !== 'function') {
+                    output += `${key}: ${book[key]}<br>`;
+                }
+            }
+            
+            document.getElementById("output5").innerHTML = output;
+        }
+        
+        // 6. Практический пример: Управление библиотекой
+        function demoLibrary() {
+            // Создаем объект библиотеки
+            let library = {
+                name: "Центральная библиотека",
+                books: [
+                    {title: "JavaScript: Полное руководство", author: "Флэнаган Д.", year: 2020},
+                    {title: "Чистый код", author: "Мартин Р.", year: 2018},
+                    {title: "Совершенный код", author: "Макконнелл С.", year: 2019}
+                ],
+                addBook: function(title, author, year) {
+                    this.books.push({title, author, year});
+                    return `Книга "${title}" добавлена в библиотеку.`;
+                },
+                removeBook: function(title) {
+                    let index = this.books.findIndex(book => book.title === title);
+                    if (index !== -1) {
+                        this.books.splice(index, 1);
+                        return `Книга "${title}" удалена из библиотеки.`;
+                    }
+                    return `Книга "${title}" не найдена.`;
+                },
+                findBook: function(title) {
+                    return this.books.find(book => book.title === title);
+                },
+                getBooksCount: function() {
+                    return this.books.length;
+                },
+                listBooks: function() {
+                    return this.books.map(book => 
+                        `${book.title} (${book.author}, ${book.year})`).join('<br>');
+                }
+            };
+            
+            let output = `<strong>${library.name}</strong><br>`;
+            output += `Количество книг: ${library.getBooksCount()}<br><br>`;
+            output += "<strong>Список книг:</strong><br>" + library.listBooks() + "<br><br>";
+            
+            // Добавляем новую книгу
+            output += library.addBook("Паттерны проектирования", "Гамма Э. и др.", 2021) + "<br>";
+            output += `Теперь книг в библиотеке: ${library.getBooksCount()}<br><br>`;
+            
+            // Ищем книгу
+            let foundBook = library.findBook("Чистый код");
+            if (foundBook) {
+                output += `Найдена книга: ${foundBook.title} (${foundBook.author})<br>`;
+            }
+            
+            // Удаляем книгу
+            output += library.removeBook("Совершенный код") + "<br>";
+            output += `Осталось книг: ${library.getBooksCount()}<br><br>`;
+            
+            // Перебор свойств объекта библиотеки
+            output += "<strong>Свойства объекта библиотеки:</strong><br>";
+            for (let key in library) {
+                if (typeof library[key] !== 'function') {
+                    output += `${key}: ${Array.isArray(library[key]) ? 'массив' : library[key]}<br>`;
+                }
+            }
+            
+            document.getElementById("output6").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
