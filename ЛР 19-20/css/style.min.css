@@ -107,10 +107,10 @@ body.locked{
     letter-spacing: .5px;
     text-transform: uppercase;
     background: transparent;
-    border: 1px solid #000000;
+    border: 2px solid #000000;
     border-radius: 4px;
     transition: .3s ease;
-    color: #ffffff;
+    color: #000000;
 }
 
 .btn-outline--price{
@@ -4356,7 +4356,7 @@ footer{
 
 .cart-footer {
     padding: 20px;
-    border-top: 1px solid #e5e8ed;
+    border-top: 1px solid #000000;
     background: #f9f9f9;
 }
 
@@ -4370,7 +4370,7 @@ footer{
 
 /* Кнопка Clear Cart - измененный стиль */
 #clearCartBtn {
-    background: #787a80;
+    background: #000000;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -4625,7 +4625,7 @@ footer{
 
 @keyframes slideOut {
     from { 
-        transform: translateX(0); 
+        transform: translateX(0);    
         opacity: 1; 
     }
     to { 
@@ -4690,4 +4690,11 @@ footer{
 .cart-count {
     animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
+}
+
+
+.section__profile .profile-actions button,
+.section__profile-ls .profile-actions button {
+    border: 2px solid #000000 !important;
+    color: #000000 !important;
 }

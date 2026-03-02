@@ -1,8 +1,187 @@
-body {
-    font-family: Arial;     
-    font-size: 10pt;         
-    color: black;           
-    background-image: url('1.jpg');
-    background-repeat: repeat-x; 
-    text-decoration: line-through; /* Перечеркнутый текст */
+body { 
+  margin: 0; 
+  font-family: 'Helvetica Neue', sans-serif; 
+  background-color: #1c1c1c;  
+  color: #f0f0f0;  
+  line-height: 1.6; 
+} 
+ 
+header { 
+  background-color: #1c1c1c; 
+  color: #FF5722;
+  padding: 40px 0; 
+  text-align: center; 
+  font-size: 2.8em; 
+  font-weight: 600; 
+  box-shadow: 0 4px 8px rgba(255, 87, 34, 0.3); 
+  border-bottom: none;  
+} 
+ 
+header span.red { 
+  color: #FF5722; 
+  font-weight: 600; 
+} 
+ 
+.section { 
+  padding: 30px; 
+  max-width: 1000px; 
+  margin: 40px auto; 
+  background-color: #2A2A2A;  
+  border-radius: 12px; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); 
+  border: none;  
+} 
+ 
+.section h2 { 
+  font-size: 2.2em; 
+  margin-bottom: 20px; 
+  color: #FF5722;  
+  position: relative; 
+}
+.section h2::after { 
+  content: ""; 
+  position: absolute; 
+  left: 0; 
+  bottom: -10px; 
+  width: 60px; 
+  height: 3px; 
+  background-color: #FF5722; 
+  border-radius: 2px; 
+} 
+ 
+.section p { 
+  font-size: 1em; 
+  color: #f0f0f0; 
+  margin-bottom: 20px; 
+} 
+ 
+.highlight { 
+  background-color: rgba(255, 87, 34, 0.08); 
+  padding: 20px; 
+  border-left: 5px solid #FF5722; 
+  border-radius: 12px; 
+  font-size: 1em; 
+} 
+ 
+.facts-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+  gap: 24px; 
+  margin-top: 30px; 
+} 
+ 
+.fact-card { 
+  background-color: #2A2A2A; 
+  padding: 30px; 
+  border-radius: 12px; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); 
+  transition: box-shadow 0.3s ease, transform 0.3s ease; 
+  border: none; 
+} 
+ 
+.fact-card:hover { 
+  box-shadow: 0 10px 20px rgba(255, 87, 34, 0.4); 
+  transform: translateY(-5px); 
+} 
+ 
+.fact-card h3 { 
+  margin: 0 0 10px; 
+  color: #FF5722; 
+  font-size: 1.3em; 
+} 
+ 
+.fact-card p { 
+  color: #f0f0f0; 
+  font-size: 0.95em; 
+} 
+ 
+.image-full { 
+  width: 100%; 
+  margin: 40px 0; 
+  border-radius: 12px; 
+  border: none; 
+  box-shadow: 0 6px 12px rgba(0,0,0,0.5); 
+} 
+ 
+.bottom-text { 
+  background-color: #2A2A2A; 
+  color: #f0f0f0; 
+  padding: 40px 20px; 
+  font-size: 1.05em; 
+  text-align: center; 
+  border-radius: 12px; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); 
+} 
+ 
+footer { 
+  background-color: #1c1c1c; 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 25px; 
+  padding: 30px; 
+  border-top: none; 
+} 
+ 
+.footer-btn { 
+  background-color: transparent;
+    color: #FF5722; 
+  border: 2px solid #FF5722; 
+  padding: 12px 24px; 
+  font-size: 1em; 
+  cursor: pointer; 
+  border-radius: 25px; 
+  transition: background-color 0.3s ease, transform 0.3s ease; 
+} 
+ 
+.footer-btn:hover { 
+  background-color: #FF5722; 
+  color: #1c1c1c; 
+  transform: translateY(-3px); 
+} 
+ 
+a { 
+  color: #FF5722; 
+  text-decoration: underline; 
+} 
+ 
+a:hover { 
+  color: #fff; 
+} 
+ 
+.photo-carousel { 
+  overflow: hidden; 
+  max-width: 1100px; 
+  margin: 40px auto; 
+  background-color: #2A2A2A; 
+  padding: 30px; 
+  border-radius: 12px; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); 
+} 
+ 
+.carousel-track { 
+  display: flex; 
+  width: max-content; 
+  animation: scroll-loop 40s linear infinite; 
+  gap: 30px; 
+} 
+ 
+.carousel-track img { 
+  width: 240px; 
+  height: 160px; 
+object-fit: cover; 
+border-radius: 12px; 
+border: none; 
+transition: transform 0.3s ease; 
+} 
+.carousel-track img:hover { 
+transform: scale(1.05); 
+} 
+@keyframes scroll-loop { 
+0% { 
+transform: translateX(0); 
+} 
+100% { 
+transform: translateX(-50%); 
+} 
 }

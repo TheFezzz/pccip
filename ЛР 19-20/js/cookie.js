@@ -40,7 +40,7 @@ class UserProfile {
     constructor() {
         this.init();
     }
-
+    
     init() {
         this.loadFromCookie();
         this.setupEventListeners();
