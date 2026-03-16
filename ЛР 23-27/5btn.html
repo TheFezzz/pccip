@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Образовательный раздел</title>
+    <link rel="stylesheet" href="styles2.css">
+    <!-- Стили для кнопки "Наверх" -->
+    <style>
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 1000;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #ff5722;
+        }
+        
+        /* Стили для выпадающего списка сортировки */
+        .sort-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .sort-select {
+            padding: 9px 14px;
+            background-color: #111;
+            color: #f0f0f0;
+            border: 1px solid #333;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 200px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+            padding-right: 35px;
+        }
+        
+        .sort-select:hover {
+            border-color: #555;
+        }
+        
+        .sort-select:focus {
+            outline: none;
+            border-color: #ff5722;
+            box-shadow: 0 0 0 2px rgba(255,87,34,.25);
+        }
+        
+        /* Стили для категорий в словаре */
+        .term-category {
+              display: inline-block;
+              background-color: #262626;
+              color: #ff5722;
+              border: 1px solid #ff5722;
+              font-size: 11px;
+              padding: 2px 8px;
+              border-radius: 12px;
+              margin-right: 8px;
+              vertical-align: middle;
+        }
+        
+        .extra-term {
+            display: none;
+        }
+
+        @media(max-width:600px){
+            .sort-select{width:100%;max-width:100%;}
+            #scrollTopBtn{right:16px;bottom:16px;padding:8px 12px;font-size:15px;}
+            .term-category{font-size:10px;padding:2px 6px;}
+        }
+    </style>
+</head>
+<body>
+<div class="page-header">
+    <div class="page-header-left">
+        <a href="index.html" class="nav-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+            На главную
+        </a>
+        <div class="page-title"><span>Образовательный</span> раздел</div>
+    </div>
+    <div class="controls-row">
+        <button class="ctrl-btn" onclick="toggleAccessibility()" id="accessibilityBtn">Для слабовидящих</button>
+        <div id="google_translate_element"></div>
+    </div>
+</div>
+
+<div class="content-container">
+  <main>
+      <!-- Секция с PDF книгой -->
+      <section>
+          <div id="flipbookContainer">
+              <iframe src="https://online.fliphtml5.com/bdloh/tdzu/" seamless="seamless" scrolling="no" frameborder="0" allowfullscreen="true"></iframe>
+          </div>
+      </section>
+      <!-- Секция с тематическими статьями -->
+      <section class="articles">
+  <h2>Тематические статьи</h2>
+  <div id="articleContainer" class="article-block">
+    <div class="article-text">
+      <h3 id="articleTitle">Заголовок статьи 1</h3>
+      <p id="articleContent">Основной текст статьи 1. Это пример содержания статьи, которое можно заменить на актуальное описание или образовательный материал.</p>
+    </div>
+    <div class="article-image">
+      <img id="articleImage" src="https://via.placeholder.com/400x250" alt="Изображение статьи">
+    </div>
+  </div>
+  <div class="navigation">
+    <button onclick="prevArticle()">← Назад</button>
+    <button onclick="nextArticle()">Вперёд →</button>
+  </div>
+</section>
+
+      <!-- Секция с хронологией геноцида -->
+<section class="chronology">
+  <h2>Хронология геноцидов в мире</h2>
+  <div class="timeline">
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1900 — Рафаэль Лемкин</h3>
+      </div>
+      <div class="timeline-details">
+        <p>Рафаэль Лемкин — человек, который впоследствии ввел в обиход слово "геноцид", — родился в семье польских евреев в 1900 году. В своих статьях он впервые осветил историе преследований армян в Османской империи (которое теперь расценивается большинством ученых как геноцид), еврейские погромы и другие случаи насилия над группами людей; на этом материале он доказывал необходимость правовой защиты не только отдельных людей, но и их групп.</p>
+        <figure>
+          <img src="https://encyclopedia.ushmm.org/images/large/38c2919b-89d7-4b02-a7d2-b71d8b21d70b.jpg" alt="Рафаэль Лемкин" style="max-width:100%;">
+          <figcaption>Рафаэль Лемкин (справа) с послом Бразилии Амаду (слева) перед началом Пленарного заседания Генеральной Ассамблеи, на котором была утверждена Конвенция о предупреждении преступления геноцида и наказании за него. Дворец Шейо, Париж 11 декабря 1948 года.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1933 — Приход к власти Адольфа Гитлера</h3>
+      </div>
+      <div class="timeline-details">
+        <p>30 января 1933 года состоялось назначение Адольфа Гитлера на пост рейхсканцлера; таким образом власть в Германии перешла к нацистской партии. В октябре немецкая делегация в Женеве покинула стол переговоров о разоружении, и нацистская Германия вышла из состава Лиги Наций. В октябре на международной конференции юристов в Мадриде Рафаэль Лемкин (впоследствии придумавший термин "геноцид") предложил применять правовые меры для защиты целых групп людей. Его предложение не получило поддержки.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1939 — Вторая мировая война</h3>
+      </div>
+      <div class="timeline-details">
+        <p>Вторая мировая война началась 1 сентября 1939 года, когда Германия вторглась в Польшу, а Великобритания и Франция, связанные с Польшей договором, объявили, в свою очередь, войну Германии. 17 сентября 1939 года советская армия оккупировала восточную часть Польши. Лемкин бежал из Польши, пересек Советский Союз и прибыл в Соединенные Штаты.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1941 — Преступление без названия</h3>
+      </div>
+      <div class="timeline-details">
+        <p>22 июня 1941 года фашистская Германия вторглась в Советский Союз. Во время продвижения германских войск на восток полиция, СС и личный состав вермахта проявили невиданную жестокость, что побудило британского премьер-министра Уинстона Черчилля сделать в августе 1941 года следующее заявление: "На наших глазах совершается преступление, которому еще не придумано название". В декабре 1941 года США вступили во Вторую мировую войну, приняв сторону Союзников. Лемкин, в 1941 году прибывший в США в качестве беженца, слышал выступление Черчилля и позднее заявил, что предложенный им термин "геноцид" в какой-то степени является ответом на заявление английского премьер-министра.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1944 — Появление термина "Геноцид"</h3>
+      </div>
+      <div class="timeline-details">
+        <p>Фашистское руководство стало проводить демографическую политику, предполагающую насильственное изменение этнического состава населения Европы, в том числе путем массовых убийств. Проявлением такой политики стала попытка уничтожения всех европейских евреев (получившая позднее название "Холокост"), всех цыган, а также физической ликвидации руководящих слоев населения на оккупированных территориях Польши и Советского Союза. Также эта политика включала в себя и многое другое, включая принудительные переселения и убийства, известные в наше время как "этнические чистки". В 1944 году Рафаэль Лемкин, который к тому времени переехал в Вашингтон и сотрудничал с военным департаментом США, использовал термин "геноцид" в своей книге "Правление государств "Оси" в Оккупированной Европе". В этой книге приведены документальные свидетельства убийств и преступлений, творившихся на всей оккупированной нацистами территории.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1945–1946 — Международный военный трибунал</h3>
+      </div>
+      <div class="timeline-details">
+        <p>C 20 ноября 1945 года по 1 октября 1946 года Международный военный трибунал в Нюрнберге разбирал дела 22 главных руководителей нацистской Германии, обвиняемых в преступлениях против мира, военных преступлениях и преступлениях против человечности, а также в заговоре с целью совершения всех этих преступлений. Это был первый в истории послевоенный международный суд, осудивший государственных лидеров за их преступления. Слово "геноцид" было включено в обвинительный акт, но как описательный, а не правовой термин.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1947–1948 — Конвенция о геноциде</h3>
+      </div>
+      <div class="timeline-details">
+        <p>Во многом благодаря усилиям Рафаэля Лемкина на обсуждение созданной незадолго до этого Организации Объединенных Наций, в которой присутствовали делегаты со всего мира, был выдвинут вопрос о необходимости международного закона о геноциде. Окончательная редакция Конвенции была принята и предложена для подписания и ратификации 8 декабря 1948 года. Конвенция ООН о предупреждении преступления геноцида и наказании за него вступила в силу 12 января 1951 года, после того как ее ратифицировало более 20 государств.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1950–1987 — Холодная война</h3>
+        <div class="timeline-details">
+        <p>В годы после Второй мировой войны серьезные преступления против гражданского населения были весьма частым явлением, и такое же положение сохранялось в течение всего периода "холодной войны". Так или иначе, случаи геноцида практически игнорировались государствами, подписавшими Конвенцию и взявшими на себя обязательство предотвращать подобные преступления и наказывать за них.</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1988 — США присоединяются к Конвенции</h3>
+        <div class="timeline-details">
+        <p>5 ноября 1988 года президент США Рональд Рейган подписал Конвенцию ООН о предупреждении преступления геноцида и наказании за него. Это решение имело как сторонников, так и яростных противников, утверждавших, что Конвенция посягает на государственный суверенитет Соединенных Штатов. Одним из главных сторонников Конвенции был сенатор от штата Висконсин Уильям Проксмайр, который с 1968 по 1987 год произнес в Конгрессе более 3 000 речей в ее защиту.</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1991–1995 — Югославские войны</h3>
+        <div class="timeline-details">
+        <p>Войны в бывшей Югославии сопровождались серьезными военными преступлениями и преступлениями против человечности. Конфликт в Боснии (1992-1995) сопровождался самой жестокой и кровопролитной бойней, какую только видела Европа со времен Второй мировой войны. В небольшом городке Сребреница сербскими войсками было убито 7 800 боснийских мужчин и мальчиков.</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1993 — Резолюция №827</h3>
+        <div class="timeline-details">
+        <p> В ответ на зверства, творимые в Боснии, Совет Безопасности ООН принял резолюцию №827, в соответствии с которой учреждался Международный трибунал по бывшей Югославии (ICTY) в Гааге. Это был первый Международный трибунал со времен Нюрнберга. Международный трибунал по бывшей Югославии был уполномочен осуществлять судебное преследование за следующие преступления: серьезные нарушения Женевских конвенций 1949 года, нарушения законов или обычаев войны, геноцид и преступления против человечности. Юрисдикция трибунала ограничивалась территорией бывшей Югославии.</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1994 — Геноцид в Руанде</h3>
+        <div class="timeline-details">
+        <p>С апреля по июль 1994 года в Руанде было убито до 800 000 человек, преимущественно представителей народности тутси, которая в стране является национальным меньшинством. Это было массовое уничтожение огромных масштабов, осуществленное за необычайно короткий срок. В октябре Совет Безопасности ООН распространил полномочия ICTY на независимый, но связанный с ним Международный трибунал по Руанде (ICTR), который разместился в г. Аруша (Танзания).</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>1998 — Первый приговор за геноцид</h3>
+        <div class="timeline-details">
+        <p>2 сентября 1998 года Международный трибунал по Руанде вынес первый в истории приговор за геноцид, признав Жана-Поля Акайесу виновным в геноциде и преступлениях против человечности за его действия (а также за действия, совершенные при его пособничестве) на посту мэра коммуны Таба.</p>
+    <p>Хотя эти трибуналы, а также Международный уголовный суд смогли создать судебные прецеденты и расследовать преступления в границах своей юрисдикции, добиться наказания за геноцид по-прежнему крайне сложно. Но еще сложнее насущная проблема предотвращения геноцида.</p>
+      </div>
+    </div>
+</div>
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>2004 — Геноцид в Дарфуре</h3>
+        <div class="timeline-details">
+        <p>Впервые за всю историю США правительство охарактеризовало происходящий кризис как геноцид. 9 сентября 2004 года госсекретарь Колин Пауэлл, выступая перед сенатской комиссией по международным делам, заявил: "Мы пришли к выводу — я пришел к выводу, — что в провинции Дарфур совершался геноцид, что правительство Судана и отряды ополчения Джанджавид несут за это ответственность — и что, возможно, геноцид продолжается и в настоящее время".</p>
+      </div>
+    </div>
+</div>
+
+
+    <div class="timeline-item animate-on-scroll">
+      <div class="timeline-marker"></div>
+      <div class="timeline-header">
+        <h3>2001 — Международный уголовный суд</h3>
+      </div>
+      <div class="timeline-details">
+        <p>Международный уголовный суд (МУС) начал свою работу, предоставляя механизм для преследования лиц, ответственных за геноцид, преступления против человечности и военные преступления. Это важный шаг в международном праве для предотвращения и наказания геноцида.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      <!-- Секция со словарем терминов -->
+<section class="dictionary">
+    <h2>Словарь терминов</h2>
+    <div class="dictionary-controls">
+        <input type="text" id="searchInput" onkeyup="searchDictionary()" placeholder="Поиск по терминам...">
+        <div class="sort-dropdown">
+            <select id="sortSelect" class="sort-select" onchange="applySorting()">
+                <option value="alphabet">А-Я (по алфавиту)</option>
+                <option value="reverse">Я-А (обратный порядок)</option>
+                <option value="length-asc">По длине (от коротких)</option>
+                <option value="length-desc">По длине (от длинных)</option>
+                <option value="category">По категориям</option>
+                <option value="date-added">По дате добавления</option>
+                <option value="shuffle">Перемешать случайно</option>
+                <option value="popularity">По популярности</option>
+            </select>
+        </div>
+    </div>
+    <div id="noResultsMessage" style="display: none; color: #ffffff; padding: 10px; text-align: center; font-style: italic;">
+        По запросу ничего не найдено. Попробуйте изменить поисковый запрос.
+    </div>
+    <ul id="dictionaryList">
+        <li data-category="основные" data-date="1" data-popularity="100"><span class="term-category">Основные</span><strong>Геноцид</strong> — систематическое уничтожение, истребление или подавление определенной этнической, религиозной или национальной группы.</li>
+        <li data-category="основные" data-date="2" data-popularity="95"><span class="term-category">Основные</span><strong>Великая Отечественная война</strong> — период с 1941 по 1945 год, когда Беларусь пережила массовые разрушения, массовые убийства мирных жителей и партизан.</li>
+        <li data-category="основные" data-date="3" data-popularity="90"><span class="term-category">Основные</span><strong>Хатынь</strong> — одно из самых известных мест массовых казней мирных жителей на территории Беларуси во время Второй мировой войны.</li>
+        <li data-category="основные" data-date="4" data-popularity="85"><span class="term-category">Основные</span><strong>Партизаны</strong> — бойцы сопротивления, активно сражавшиеся против фашистской оккупации на территории Беларуси.</li>
+        <li data-category="основные" data-date="5" data-popularity="80"><span class="term-category">Основные</span><strong>Оккупация</strong> — время, когда Беларусь была оккупирована нацистской Германией (1941–1944).</li>
+        <li data-category="организации" data-date="6" data-popularity="75" class="extra-term"><span class="term-category">Организации</span><strong>НКВД</strong> — народный комиссариат внутренних дел, который активно участвовал в репрессиях и депортациях, а также в подавлении сопротивления.</li>
+        <li data-category="группы" data-date="7" data-popularity="70" class="extra-term"><span class="term-category">Группы</span><strong>Каратели</strong> — войска, использовавшиеся для подавления партизанского движения и уничтожения мирного населения.</li>
+        <li data-category="движения" data-date="8" data-popularity="65" class="extra-term"><span class="term-category">Движения</span><strong>Белорусское сопротивление</strong> — движение, состоящее из партизан и подпольщиков, борющихся против немецкой оккупации.</li>
+        <li data-category="действия" data-date="9" data-popularity="60" class="extra-term"><span class="term-category">Действия</span><strong>Депортации</strong> — насильственные переселения населения, включая еврейские и другие группы, которые подвергались преследованиям.</li>
+        <li data-category="лагеря" data-date="10" data-popularity="55" class="extra-term"><span class="term-category">Лагеря</span><strong>Шталаг</strong> — лагеря для военнопленных, в которых также содержались мирные жители.</li>
+        <li data-category="лагеря" data-date="11" data-popularity="50" class="extra-term"><span class="term-category">Лагеря</span><strong>Лагеря смерти</strong> — концентрационные лагеря, такие как Тростенец, где уничтожали евреев и другие группы населения.</li>
+        <li data-category="действия" data-date="12" data-popularity="45" class="extra-term"><span class="term-category">Действия</span><strong>Массированные расстрелы</strong> — массовые казни мирных жителей, совершенные нацистами и их союзниками.</li>
+        <li data-category="явления" data-date="13" data-popularity="40" class="extra-term"><span class="term-category">Явления</span><strong>Коллаборационизм</strong> — сотрудничество с оккупационными властями в ущерб своей родной стране.</li>
+        <li data-category="места" data-date="14" data-popularity="35" class="extra-term"><span class="term-category">Места</span><strong>Гетто</strong> — территории, на которых были изолированы евреи и другие меньшинства, подвергавшиеся насилию и уничтожению.</li>
+        <li data-category="действия" data-date="15" data-popularity="30" class="extra-term"><span class="term-category">Действия</span><strong>Беспощадные репрессии</strong> — жестокие наказания и убийства, проводившиеся оккупационными властями и местными коллаборационистами.</li>
+        <li data-category="действия" data-date="16" data-popularity="25" class="extra-term"><span class="term-category">Действия</span><strong>Рейд</strong> — военные операции, направленные на уничтожение партизан и гражданского населения.</li>
+        <li data-category="явления" data-date="17" data-popularity="20" class="extra-term"><span class="term-category">Явления</span><strong>Пропаганда</strong> — распространение ложной информации для оправдания преступлений, совершенных нацистами и коллаборационистами.</li>
+        <li data-category="группы" data-date="18" data-popularity="15" class="extra-term"><span class="term-category">Группы</span><strong>Жертвы геноцида</strong> — люди, подвергшиеся уничтожению, насилию или депортации по этническим, национальным или политическим мотивам.</li>
+        <li data-category="память" data-date="19" data-popularity="10" class="extra-term"><span class="term-category">Память</span><strong>Мемориалы</strong> — памятники, воздвигнутые в честь жертв геноцида и войны.</li>
+        <li data-category="движения" data-date="20" data-popularity="5" class="extra-term"><span class="term-category">Движения</span><strong>Сопротивление</strong> — любые действия против власти оккупантов, в том числе партизанская война и мирные протесты.</li>
+        <li data-category="действия" data-date="21" data-popularity="8" class="extra-term"><span class="term-category">Действия</span><strong>Репрессии</strong> — жестокие действия властей, направленные на подавление инакомыслия или сопротивления.</li>
+        <li data-category="места" data-date="22" data-popularity="12" class="extra-term"><span class="term-category">Места</span><strong>Катынь</strong> — место массовых казней польских офицеров и интеллигенции в 1940 году, также трагедия, в которой участвовали и белорусские силы.</li>
+        <li data-category="организации" data-date="23" data-popularity="18" class="extra-term"><span class="term-category">Организации</span><strong>Усташи</strong> — хорватская фашистская организация, которая сотрудничала с нацистами, также участвовала в насилии на территории Беларуси.</li>
+        <li data-category="термины" data-date="24" data-popularity="22" class="extra-term"><span class="term-category">Термины</span><strong>Палестина</strong> — термин, который иногда используется в историческом контексте для обозначения мест, на которых были вынуждены жить беженцы в результате военных конфликтов и геноцида.</li>
+        <li data-category="явления" data-date="25" data-popularity="28" class="extra-term"><span class="term-category">Явления</span><strong>Культ личности</strong> — процесс создания образа вождя как непогрешимого, что способствует оправданию репрессий и геноцида.</li>
+        <li data-category="действия" data-date="26" data-popularity="32" class="extra-term"><span class="term-category">Действия</span><strong>Мобилизация</strong> — процесс вовлечения населения и ресурсов в войну, часто сопровождающийся насильственными мерами.</li>
+        <li data-category="явления" data-date="27" data-popularity="38" class="extra-term"><span class="term-category">Явления</span><strong>Антисемитизм</strong> — ненависть и преследование евреев, что было частью нацистской идеологии, приведшей к массовому уничтожению евреев в Беларуси и других странах.</li>
+        <li data-category="идеологии" data-date="28" data-popularity="42" class="extra-term"><span class="term-category">Идеологии</span><strong>Фашизм</strong> — экстремистская политическая идеология, которая привела к массовым репрессиям и геноциду в Европе в XX веке.</li>
+        <li data-category="термины" data-date="29" data-popularity="48" class="extra-term"><span class="term-category">Термины</span><strong>Этническая чистка</strong> — насильственные действия, направленные на удаление определенной этнической группы с территории.</li>
+        <li data-category="термины" data-date="30" data-popularity="52" class="extra-term"><span class="term-category">Термины</span><strong>Военные преступления</strong> — нарушения законов и обычаев войны, регулируемых международным правом.</li>
+        <li data-category="термины" data-date="31" data-popularity="58" class="extra-term"><span class="term-category">Термины</span><strong>Преступления против человечности</strong> — широкомасштабные или систематические нападения на гражданское население.</li>
+    </ul>
+    <button id="showMoreBtn" onclick="toggleAdditionalTerms()">Показать больше</button>
+</section>
+  </main>
+</div>
+
+<!-- Кнопка "Наверх" -->
+    <button onclick="scrollToTop()" id="scrollTopBtn" title="Наверх">↑</button>
+
+<script src="script.js"></script>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ru',
+    includedLanguages: 'en,ru,uk,de,fr', // список доступных языков
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

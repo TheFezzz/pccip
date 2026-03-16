@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Истории очевидцев</title>
+    
+    <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="styles2.css">
+    
+    <!-- Подключаем стили Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div class="top-controls">
+  <a href="index.html" class="back-home-btn">← На главную</a>
+  <button onclick="toggleAccessibility()" id="accessibilityBtn">Версия для слабовидящих</button>
+  <div id="google_translate_element"></div>
+</div>
+   <!-- Сведетели -->
+<div class="container">
+    <div class="info">
+        <h1 id="person-name">Имя Фамилия</h1>
+        <img id="profile-pic" src="person1.jpg" alt="Фотография человека" class="profile-pic">
+        <p id="person-age"><strong>Возраст:</strong> 30 лет</p>
+        <p id="person-bio"><strong>Биография:</strong> Краткая информация о человеке.</p>
+    </div>
+
+    <div class="quotes">
+        <h2>Воспоминания...</h2>
+        <blockquote id="quote1">"Ваши слова, которые вы хотите вставить сюда."</blockquote>
+        <a id="moreLink" href="index.php">
+          <button id="moreBtn">Узнать больше</button>
+        </a>
+    </div>
+</div>
+
+<!-- Навигация -->
+<div class="navigation">
+    <button id="prevBtn">← Предыдущий</button>
+    <button id="nextBtn">Следующий →</button>
+</div>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'ru',
+      includedLanguages: 'en,ru,be,uk,de,fr,pl', // добавьте нужные языки
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" 
+  src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+    <!-- Подключаем библиотеку Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Подключение внешнего JS файла -->
+    <script src="script.js"></script>
+
+    <!-- Подключаем библиотеку PapaParse для чтения CSV -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мемориалы</title>
+
+    <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="stylesshkala.css">
+    
+    <!-- Подключаем стили Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+   <header>
+    <div class="top-controls">
+      <a href="index.html" class="back-home-btn">← На главную</a>
+      <div id="google_translate_element"></div>
+    </div>
+</header>
+    <main>
+        <section id="timeline">
+          <!--<a href="index.html" class="back-arrow" title="На главную">←</a>-->
+          
+            <div class="tl-item">
+              
+              <div class="tl-bg" style="background-image: url(https://placeimg.com/801/801/nature)"></div>
+            
+              <div class="tl-year">
+                <p class="f2 heading--sanSerif">1917</p>
+              </div>
+          
+              <div class="tl-content">
+                <h1>Предпосылки</h1>
+                <p>1917–1922 — Гражданская война в бывшей Российской империи. Раздел Беларуси между СССР и Польшей.
+
+                  1920–1930-е — Советская политика "коренизации", а затем — её свертывание. Начало репрессий против белорусской интеллигенции и духовенства.
+                  
+                  1937–1938 — Большой террор. Массовые аресты и расстрелы в БССР: репрессии против писателей, учёных, крестьян, учителей.
+                  
+                  Антисемитизм и ксенофобия — как в нацистской идеологии, так и в риторике сталинского режима, — закладывали фундамент будущих преступлений.</p>
+              </div>
+          
+            </div>
+          
+            <div class="tl-item">
+              
+              <div class="tl-bg" style="background-image: url(https://placeimg.com/802/802/nature)"></div>
+              
+              <div class="tl-year">
+                <p class="f2 heading--sanSerif">1939</p>
+              </div>
+          
+              <div class="tl-content">
+                <h1 class="f3 text--accent ttu">Начало</h1>
+                <p>1939 — Советский Союз оккупирует Западную Беларусь по пакту Молотова — Риббентропа. Репрессии против «буржуазных элементов», поляков, белорусских националистов, интеллигенции.
+
+                  1940–1941 — Массовые депортации в Сибирь и Казахстан. Репрессии НКВД. Уничтожение национальной элиты, крестьян, священников, политических оппонентов..</p>
+              </div>
+          
+            </div>
+          
+            <div class="tl-item">
+              
+              <div class="tl-bg" style="background-image: url(https://placeimg.com/803/803/nature)"></div>
+              
+              <div class="tl-year">
+                <p class="f2 heading--sanSerif">1941</p>
+              </div>
+          
+              <div class="tl-content">
+                <h1 class="f3 text--accent ttu">Пик:нацистская оккупация</h1>
+                <p>22 июня 1941 года — начало Великой Отечественной войны. Беларусь была оккупирована Германией за считаные недели.
+                  1941–1944 — Геноцид еврейского населения (около 800 000 человек убито, почти полностью уничтожено).
+                  Создание гетто (Минское гетто — одно из крупнейших в Европе), лагерей смерти (Тростенец, Азаричи и др.).
+                  Операции карательных экспедиций против деревень, помогавших партизанам, — сожжены сотни деревень вместе с жителями (например, Хатынь).
+                  Массовое уничтожение цыган, душевнобольных, политических заключённых, коммунистов.
+                  Активное сотрудничество некоторых местных коллаборационистов с нацистами.</p>
+              </div>
+          
+            </div>
+          
+            <div class="tl-item">
+              
+              <div class="tl-bg" style="background-image: url(https://placeimg.com/800/800/nature)"></div>
+              
+              <div class="tl-year">
+                <p class="f2 heading--sanSerif">1944</p>
+              </div>
+          
+              <div class="tl-content">
+                <h1 class="f3 text--accent ttu">Последствия</h1>
+                <p>1944 — Освобождение Беларуси. Возвращение советской власти.
+
+                  Возобновление сталинских репрессий: аресты тех, кто выжил во время оккупации, особенно бывших партизан и свидетелей преступлений.
+                  
+                  Замалчивание Холокоста: еврейские жертвы официально обозначались как «советские граждане».
+                  
+                  Тема уничтоженных деревень и «невинных жертв» становилась частью советской пропаганды, но без этнической конкретизации.
+                  
+                  1980–1990-е годы — постепенное раскрытие информации, признание Холокоста и трагедии белорусского народа.
+                  
+                  2020-е годы — в Беларуси появляются исследования и инициативы по сохранению памяти, однако тема геноцида по-прежнему используется избирательно и политически.</p>
+              </div>
+          
+            </div>
+
+          </section>          
+    </main>
+
+    
+    <!-- Подключаем библиотеку Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    
+    <!-- Подключаем библиотеку PapaParse для чтения CSV -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'ru',
+      includedLanguages: 'en,ru,be,uk,de,fr,pl', // добавьте нужные языки
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" 
+  src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+    </body>
+    </html>

@@ -1,0 +1,198 @@
+/* Общие стили для страницы */
+html, body {
+    background-color: #1c1c1c; /* темный фон */
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #f0f0f0; /* светло-серый текст */
+}
+
+/* Таймлайн */
+#timeline {
+    display: flex;
+    background-color: #1c1c1c;
+}
+
+#timeline:hover .tl-item {
+    width: 23.3333%;
+}
+
+/* Элементы таймлайна */
+.tl-item {
+    position: relative;
+    width: 25%;
+    height: 100vh;
+    min-height: 600px;
+    color: #f0f0f0;
+    overflow: hidden;
+    transition: width 0.5s ease;
+    background-color: #2a2a2a;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.tl-item:after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(28, 28, 28, 0.15);
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.tl-item:before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 75%);
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(50%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+
+/* При наведении на элемент */
+.tl-item:hover {
+    width: 30% !important;
+    background-color: #1c1c1c;
+    box-shadow: 0 10px 20px rgba(255, 87, 34, 0.4);
+}
+
+.tl-item:hover:after {
+    opacity: 0;
+}
+
+.tl-item:hover:before {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease 0.25s;
+}
+
+/* Контент внутри элемента */
+.tl-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin: 0 1.618em;
+    top: 26%;
+    opacity: 0.4;
+    transform: translateY(25px);
+    transition: opacity 0.75s ease 0.3s, transform 0.75s ease 0.3s;
+}
+
+.tl-item:hover .tl-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Заголовок внутри контента */
+.tl-content h1 {
+    font-family: 'Pathway Gothic One', 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    color: #FF5722; /* оранжевый акцент */
+    font-size: 1.44rem;
+    font-weight: 600;
+}
+
+/* Год */
+.tl-year {
+    position: absolute;
+    top: 21%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 0.2em 0;
+}
+
+.tl-year p {
+    font-family: 'Pathway Gothic One', 'Helvetica Neue', sans-serif;
+    font-size: 1.728rem;
+    color: #FF5722;
+    margin: 0;
+}
+
+/* Фон внутри элемента */
+.tl-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+    z-index: 0;
+}
+
+.tl-item:hover .tl-bg {
+    filter: grayscale(0);
+}
+
+/* Кнопка назад */
+.back-arrow {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    font-size: 1.5rem;
+    color: #f0f0f0;
+    text-decoration: none;
+    z-index: 1000;
+    transition: color 0.3s ease;
+}
+
+.back-arrow:hover {
+    color: #FF5722;
+}
+
+/* Верхний контролы */
+.top-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 10px 0 20px 0;
+}
+
+/* Кнопки и ссылки в контролах */
+.top-controls .back-home-btn,
+.top-controls button {
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Ссылка "На главную" */
+.top-controls .back-home-btn {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    text-decoration: none;
+    border: 1px solid #FF5722;
+}
+
+.top-controls .back-home-btn:hover {
+    background-color: #FF5722;
+    color: #1c1c1c;
+    transform: translateY(-2px);
+}
+
+/* Кнопка "Версия для слабовидящих" */
+.top-controls button {
+    background-color: #FF5722;
+    color: #fff;
+    border: none;
+}
+
+.top-controls button:hover {
+    background-color: #D84315;
+    transform: translateY(-3px);
+}

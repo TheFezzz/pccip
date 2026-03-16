@@ -1,0 +1,766 @@
+/* Общие стили для страницы — единый стиль со Стена памяти / Карта событий */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #0e0e0e;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Шапка страницы — как на Стене памяти */
+.page-header {
+    background: linear-gradient(180deg, rgba(30,30,30,.96) 0%, rgba(14,14,14,.98) 100%);
+    border-bottom: 1px solid #262626;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.page-header-left { display: flex; align-items: center; gap: 14px; }
+.nav-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 999px;
+    background: #1e1e1e; border: 1px solid #333;
+    color: #e0e0e0; text-decoration: none; font-size: 13px; font-weight: 500;
+    transition: all .15s;
+}
+.nav-link:hover {
+    background: #ff5722; border-color: #ff5722; color: #fff;
+    transform: translateY(-1px); box-shadow: 0 6px 16px rgba(255,87,34,.4);
+}
+.page-title { font-size: 20px; font-weight: 700; color: #fff; }
+.page-title span { color: #ff5722; }
+.controls-row { display: flex; align-items: center; gap: 8px; }
+.ctrl-btn {
+    padding: 7px 14px; border-radius: 999px; border: 1px solid #333;
+    background: #1a1a1a; color: #ccc; font-size: 12px; cursor: pointer;
+    text-decoration: none; transition: all .15s;
+}
+.ctrl-btn:hover { background: #ff5722; border-color: #ff5722; color: #fff; }
+
+/* Устаревший header — скрыт при использовании page-header */
+header.legacy-header {
+    display: none;
+}
+
+/* Стили для основного контента */
+main {
+    padding: 40px 20px;
+}
+
+/* Стили для секций */
+section {
+    margin-bottom: 50px;
+}
+
+/* Стили для заголовков в разделах */
+h2 {
+    color: #FF5722; /* оранжевый акцент */
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+/* Стили для исторических разделов — карточки как на Стене памяти */
+.history,
+.memorials {
+    padding: 24px 26px;
+    border-radius: 14px;
+    background-color: #181818;
+    border: 1px solid #262626;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+    margin-bottom: 28px;
+}
+
+/* Стили для библиотеки */
+.library {
+    padding: 24px 26px;
+    border-radius: 14px;
+    background-color: #181818;
+    border: 1px solid #262626;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+    margin-bottom: 28px;
+}
+.library h2 { color: #ff5722; font-size: 1.3em; margin-bottom: 20px; }
+.library h3 { color: #e0e0e0; font-size: 1em; margin-bottom: 8px; font-weight: 500; }
+
+/* Стили для изображений в мемориалах */
+.memorials img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 15px;
+    transition: transform 0.3s ease;
+}
+
+.memorials img:hover {
+    transform: scale(1.05);
+}
+
+/* Стили для галереи изображений */
+.splitpic-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: nowrap;
+    padding: 30px;
+    overflow-x: auto;
+}
+
+.splitpic-wrapper {
+    flex: 1 1 30%;
+    max-width: 400px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #181818;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #262626;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    transition: transform .12s ease, box-shadow .15s ease, border-color .15s;
+}
+
+.splitpic-wrapper:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+    border-color: #444;
+}
+
+/* Стили для изображений внутри блока */
+.splitpic-images {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.splitpic-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.splitpic-images img:hover {
+    transform: scale(1.1);
+}
+
+/* Описание изображений */
+.image-description {
+    text-align: center;
+    color: #f0f0f0;
+    font-size: 1.1em;
+    margin-top: 15px;
+}
+
+.image-description h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #FF5722;
+}
+
+/* Стили для карт */
+#map {
+    height: 400px;
+    margin-top: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Стили для кнопок */
+button {
+    padding: 10px 20px;
+    margin: 10px 6px;
+    border: none;
+    background: linear-gradient(135deg, #ff7043, #ff5722);
+    color: #fff;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: transform .1s, box-shadow .12s, filter .12s;
+}
+
+button:hover {
+    filter: brightness(1.06);
+    box-shadow: 0 8px 18px rgba(255,87,34,.45);
+    transform: translateY(-1px);
+}
+
+/* Стили для футера */
+footer {
+    background-color: #0e0e0e;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 30px;
+}
+
+.footer-btn {
+    background-color: transparent;
+    color: #FF5722;
+    border: 2px solid #FF5722;
+    padding: 12px 24px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-btn:hover {
+    background-color: #FF5722;
+    color: #1c1c1c;
+    transform: translateY(-3px);
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .splitpic-wrapper {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .splitpic-images {
+        height: 200px;
+    }
+
+    .splitpic-info {
+        font-size: 1.5em;
+    }
+}
+
+/* Эффект hover для изображений с левой/правой сменой */
+.splitpic-wrapper:hover .splitpic-left-image img {
+    display: block;
+}
+
+.splitpic-wrapper:hover .splitpic-right-image img {
+    display: none;
+}
+
+.splitpic-wrapper .splitpic-left-image img {
+    display: none;
+}
+
+.hover-hint {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95em;
+    color: #9e9e9e;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Стили для контейнера книги */
+#flipbookContainer {
+    max-width: 1000px;
+    margin: 0 auto 28px;
+    background-color: #181818;
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid #262626;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    text-align: center;
+}
+
+#flipbookContainer iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+    border-radius: 10px;
+}
+
+.book-hint {
+    text-align: center;
+    color: #bbb;
+    margin-top: 15px;
+    font-style: italic;
+    font-size: 1.1em;
+    opacity: 0.85;
+}
+
+/* Кнопка "На главную" — в стиле nav-link */
+.back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all .15s;
+}
+
+.back-home-btn:hover {
+    background: #ff5722;
+    border-color: #ff5722;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(255,87,34,.4);
+}
+
+/* Стили для контейнера текста с ограничением строк */
+.image-description .text-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 6.6em;
+}
+
+.image-description.expanded .text-content {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  max-height: none;
+}
+
+.image-description .toggle-btn {
+  margin-top: 10px;
+  background-color: transparent;
+  color: #FF5722;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95em;
+  font-style: italic;
+  transition: color 0.3s ease;
+}
+
+.image-description .toggle-btn:hover {
+  color: #D84315;
+}
+
+/* Стили для контейнера "Свидетели" */
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 20px;
+}
+
+.info,
+.quotes {
+    background-color: #181818;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #262626;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    transition: transform .12s ease;
+}
+
+.info:hover,
+.quotes:hover {
+    transform: translateY(-3px);
+}
+
+.profile-pic {
+    max-width: 320px;
+    max-height: 280px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    display: block;
+    margin: 10px auto 0;
+}
+
+.profile-pic:hover {
+    transform: scale(1.03);
+}
+
+/* Стили для словаря */
+.dictionary {
+    margin-top: 20px;
+    padding: 28px 26px;
+    background-color: #181818;
+    border-radius: 14px;
+    border: 1px solid #262626;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+    color: #f0f0f0;
+}
+
+.dictionary h2 {
+    color: #FF5722;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+.dictionary-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 70%;
+    padding: 10px 14px;
+    background-color: #111;
+    color: #f0f0f0;
+    border: 1px solid #333;
+    border-radius: 10px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color .18s, box-shadow .18s;
+}
+
+#searchInput:focus {
+    border-color: #ff5722;
+    box-shadow: 0 0 0 2px rgba(255,87,34,.25);
+}
+
+#searchInput::placeholder {
+    color: #666;
+}
+
+#dictionaryList li {
+    margin: 10px 0;
+    padding: 14px 16px;
+    background-color: #1a1a1a;
+    border: 1px solid #262626;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform .12s ease, border-color .15s;
+}
+
+#dictionaryList li:hover {
+    transform: translateY(-2px);
+    border-color: #444;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+#dictionaryList li strong {
+    color: #FF5722;
+}
+
+.extra-term { display: none; }
+
+@media (max-width: 768px) {
+    .dictionary-controls { flex-direction: column; align-items: stretch; }
+    #searchInput { width: 100%; margin-bottom: 10px; }
+    button { width: 100%; }
+}
+
+/* Секция статей */
+.articles {
+    padding: 28px 26px;
+    background-color: #181818;
+    border: 1px solid #262626;
+    border-radius: 14px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+    margin-bottom: 28px;
+}
+.articles h2 {
+    color: #ff5722;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+.navigation {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+.navigation button {
+    margin: 0;
+}
+
+/* Статья */
+.article-block {
+  display: flex;
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 24px 26px;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.article-text {
+  flex: 1;
+  color: #f0f0f0;
+}
+
+.article-text h3 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #FF5722;
+}
+
+.article-text p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.article-image {
+  flex: 1;
+  max-width: 400px;
+}
+
+.article-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.article-image img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .article-block { flex-direction: column; }
+  .article-image { max-width: 100%; }
+}
+
+/* Доступность */
+body.accessibility {
+    background-color: #000 !important;
+    color: #fff !important;
+    font-size: 1.4em;
+    line-height: 1.8;
+}
+
+body.accessibility img { display: none; }
+body.accessibility a { color: #FF5722 !important; text-decoration: underline !important; }
+
+/* Контейнер контента — как на Стене памяти */
+.content-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+}
+
+.top-controls { display: flex; align-items: center; gap: 10px; margin: 10px; }
+
+/* Хронология */
+.chronology {
+    padding: 2rem;
+    background-color: #181818;
+    border: 1px solid #262626;
+    border-radius: 14px;
+    color: #f0f0f0;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+}
+
+.timeline {
+    position: relative;
+    padding-left: 40px;
+    border-left: 4px solid #ff5722;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 30px;
+    margin-bottom: 30px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 20px;
+    border-left: 3px solid #333;
+}
+.timeline-header h3 {
+    color: #ff5722;
+    margin: 0 0 8px;
+    font-size: 1.1em;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -12px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    background: #ff5722;
+    border-radius: 50%;
+    border: 3px solid #181818;
+    box-shadow: 0 0 0 2px #ff5722;
+    transition: background-color 0.3s;
+}
+
+.timeline-item.active .timeline-marker {
+    background-color: #ff7043;
+}
+
+.timeline-content {
+    background: #1a1a1a;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #2a2a2a;
+}
+
+.timeline-details {
+  display: block;
+  color: #ccc;
+  font-size: 0.95em;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.timeline-details p { margin: 0 0 10px; }
+.timeline-details figure { margin: 12px 0 0; }
+.timeline-details figcaption { font-size: 0.85rem; color: #888; }
+
+
+.timeline-content h3 { color: #FF5722; margin-top: 0; }
+.timeline-content figure { margin: 1rem 0 0; }
+.timeline-content img, .timeline-content video { max-width: 100%; border-radius: 8px; border: 1px solid #444; }
+.timeline-content figcaption { font-size: 0.9rem; color: #bbb; }
+
+.animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+/* ── ГЛОБАЛЬНЫЙ АДАПТИВ ── */
+@media (max-width: 900px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 16px;
+    gap: 10px;
+  }
+  .page-header-left {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .page-title {
+    font-size: 17px;
+  }
+  .content-container {
+    padding: 18px 14px 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-header {
+    padding: 12px 12px;
+  }
+  .nav-link, .ctrl-btn, .back-home-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  .page-title {
+    font-size: 15px;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+
+  /* Карточки */
+  .history, .memorials, .library, .chronology, .dictionary {
+    padding: 16px 14px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+  }
+
+  /* Контейнеры книги, статей */
+  #flipbookContainer {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+  }
+  #flipbookContainer iframe {
+    height: 350px;
+  }
+
+  /* Галерея */
+  .splitpic-row {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    gap: 16px;
+  }
+  .splitpic-wrapper {
+    max-width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .splitpic-images {
+    height: 180px;
+  }
+  .image-description h3 {
+    font-size: 1.1em;
+  }
+
+  /* Статьи */
+  .article-block {
+    flex-direction: column;
+    padding: 16px 14px;
+  }
+  .article-image {
+    max-width: 100%;
+  }
+  .article-text h3 {
+    font-size: 1.2em;
+  }
+
+  /* Словарь */
+  .dictionary-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+  #searchInput {
+    width: 100%;
+  }
+  .sort-select {
+    width: 100%;
+  }
+
+  /* Хронология */
+  .timeline {
+    padding: 16px 12px 16px 24px;
+  }
+  .timeline-item {
+    padding-left: 14px;
+  }
+
+  /* Карточки контента */
+  .container {
+    flex-direction: column;
+    padding: 12px;
+    gap: 16px;
+  }
+  .profile-pic {
+    max-width: 100%;
+    max-height: 220px;
+  }
+
+  /* Кнопки */
+  button {
+    padding: 8px 16px;
+    font-size: 12px;
+    margin: 6px 4px;
+  }
+}
+
+@media (max-width: 360px) {
+  .page-title {
+    font-size: 14px;
+  }
+  .nav-link, .ctrl-btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+  #flipbookContainer iframe {
+    height: 260px;
+  }
+  .splitpic-images {
+    height: 140px;
+  }
+}

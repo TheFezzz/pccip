@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта</title>
+    
+    <!-- Подключение CSS файла -->
+    <link rel="stylesheet" href="styles2.css">
+    
+    <!-- Подключаем стили Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+ <div class="top-controls">
+  <a href="index.html" class="back-home-btn">← На главную</a>
+  <div id="google_translate_element"></div>
+</div>
+<body>
+    <header>
+        <h1>Сожённые деревни на территории Беларуси</h1>
+    </header>
+    <main>
+<!-- Карта деревень -->
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2dc83a72f5728d58cbd9e785366fd1a88b68ef27614b51e970fa1e9bb23cbf92&amp;width=100%25&amp;height=450&amp;lang=ru_RU&amp;scroll=true&amp;apikey=<d9cf18cc-0541-433a-b8fa-76415c19ca5b>"></script>
+</section>
+    </main>
+    <script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'ru',
+      includedLanguages: 'en,ru,be,uk,de,fr,pl', // добавьте нужные языки
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" 
+  src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+</body>
+</html>

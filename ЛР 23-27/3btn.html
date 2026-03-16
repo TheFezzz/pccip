@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея</title>
+
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" href="styles2.css">
+
+    <!-- Стили Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <!-- Стили для кнопки "Наверх" -->
+    <style>
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 1000;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #ff5722;
+        }
+
+        @media(max-width:600px){
+            #scrollTopBtn{right:16px;bottom:16px;padding:8px 12px;font-size:15px;}
+        }
+    </style>
+</head>
+<body>
+<div class="page-header">
+    <div class="page-header-left">
+        <a href="index.html" class="nav-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+            На главную
+        </a>
+        <div class="page-title"><span>Галерея</span></div>
+    </div>
+    <div class="controls-row">
+        <div id="google_translate_element"></div>
+    </div>
+</div>
+
+<div class="content-container">
+    <main>
+        <section>
+            <div class="splitpic-row">
+
+                <!-- Блок 1 -->
+                <div class="splitpic-wrapper">
+                    <div class="splitpic splitpic-horizontal" data-orientation="horizontal">
+                        <div class="splitpic-images" data-start-percent="0">
+                            <div class="splitpic-image splitpic-right-image">
+                                <img src="до-после/озаричи1.jpg" alt="Озаричи до мемориала" class="card-image">
+                            </div>
+                            <div class="splitpic-image splitpic-left-image">
+                                <img src="до-после/озаричи2.jpg" alt="Мемориал в Озаричах" class="card-image">
+                            </div>
+                            <div class="splitpic-bar"></div>
+                            <div class="splitpic-info">
+                                <span class="fa fa-chevron-left"></span> Slide
+                                <span class="fa fa-chevron-right"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-description">
+                        <h3>Озаричи. До и после</h3>
+                        <p>Сперва — архивное изображение места до установки памятника , дальше  — современный вид мемориала в Озаричах.</p>
+                    </div>
+                </div>
+
+                <!-- Блок 2 -->
+                <div class="splitpic-wrapper">
+                    <div class="splitpic splitpic-horizontal" data-orientation="horizontal">
+                        <div class="splitpic-images" data-start-percent="0">
+                            <div class="splitpic-image splitpic-right-image">
+                                <img src="до-после/тростенец1.jpg" alt="Тростенец до мемориала" class="card-image">
+                            </div>
+                            <div class="splitpic-image splitpic-left-image">
+                                <img src="до-после/тростенец2.jpg" alt="Мемориал в Тростенце" class="card-image">
+                            </div>
+                            <div class="splitpic-bar"></div>
+                            <div class="splitpic-info">
+                                <span class="fa fa-chevron-left"></span> Slide
+                                <span class="fa fa-chevron-right"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-description">
+                        <h3>Тростенец. До и после</h3>
+                        <p>Мемориальный комплекс в Тростенце — одно из крупнейших мест массового уничтожения на территории Беларуси.</p>
+                    </div>
+                </div>
+
+                <!-- Блок 3 -->
+                <div class="splitpic-wrapper">
+                    <div class="splitpic splitpic-horizontal" data-orientation="horizontal">
+                        <div class="splitpic-images" data-start-percent="0">
+                            <div class="splitpic-image splitpic-right-image">
+                                <img src="до-после/хатынь1.jpg" alt="Хатынь до" class="card-image">
+                            </div>
+                            <div class="splitpic-image splitpic-left-image">
+                                <img src="до-после/хатынь2.jpg" alt="Мемориал Хатынь" class="card-image">
+                            </div>
+                            <div class="splitpic-bar"></div>
+                            <div class="splitpic-info">
+                                <span class="fa fa-chevron-left"></span> Slide
+                                <span class="fa fa-chevron-right"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-description">
+                        <h3>Хатынь. До и после</h3>
+                        <p>Мемориальный комплекс "Хатынь" построен на месте деревни, уничтоженной вместе с жителями в годы войны.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="hover-hint">🖱️ Наведи курсор на любое изображение, чтобы увидеть, как оно изменилось</div>
+        </section>
+          <!-- Фотогалерея -->
+<section class="library">
+    <div class="splitpic-row">
+        <div class="splitpic-wrapper">
+            <div class="splitpic-images">
+                <img src="gal1.jpg" alt="Фото 1">
+            </div>
+            <div class="image-description">
+                 <div class="text-content">
+                <p>«В августе месяце 1943 года немецким гестапо за связь с партизанами был арестован мой муж, Ларионов Георгий Александрович… В сентябре 1943 года он был расстрелян. 29 августа за хранение оружия был арестован и брошен в тюрьму мой сын Ларионов Анатолий, рожденный в 1927 году». Через месяц его освободили, а в ноябре вновь схватили и угнали в Германию. «Дальнейшая судьба его мне неизвестна», — пишет в феврале 1945 года белоруска, потерявшая и мужа, и сына. К справке прикреплена маленькая фотокарточка ее пропавшего 17-летнего мальчика…</p>
+            </div>
+            <button class="toggle-btn">Показать больше</button>
+            </div>
+        </div>
+  
+        <div class="splitpic-wrapper">
+            <div class="splitpic-images">
+                <img src="gal2.jpg" alt="Фото 2">
+            </div>
+            <div class="image-description">
+                <p>Нацисты обнесли гетто двухметровыми столбами и натянули колючую проволоку в несколько рядов. Висит предупреждение: по перелезающим через забор будут стрелять</p>
+            </div>
+        </div>
+  
+        <div class="splitpic-wrapper">
+            <div class="splitpic-images">
+                <img src="gal3.jpg" alt="Фото 3">
+            </div>
+            <div class="image-description">
+                <p>Узники концлагеря. Фото: Федеральный архив Германии</p>
+            </div>
+        </div>
+    </div>
+  </section>
+  
+  <!-- Видеораздел -->
+  <section class="library">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);">
+        <iframe src="https://rutube.ru/play/embed/aa0f554c099b3f561a8994e5029e949b/?skinColor=000000&t=19" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
+</section>
+
+  <!-- Аудиоархив -->
+  <section class="library">
+    <h2>Аудиоархив</h2>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div>
+            <h3 style="color: #D0D6DB; margin-bottom: 8px;">Германский оккупационный режим на территории Беларуси в годы Великой Отечественной войны. Политика геноцида </h3>
+            <audio controls style="width: 100%; border-radius: 8px;">
+                <source src="Германский оккупационный режим на территории Беларуси.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает аудиоэлемент.
+            </audio>
+        </div>
+        <div>
+            <h3 style="color: #D0D6DB; margin-bottom: 8px;">Генпрокурор Беларуси А. Швед о расследовании уголовного дела о геноциде __ эфир телеканала «МИР 24» </h3>
+            <audio controls style="width: 100%; border-radius: 8px;">
+                <source src="о расследовании уголовного дела о геноциде.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает аудиоэлемент.
+            </audio>
+        </div>
+    </div>
+  </section>
+  
+    </main>
+</div>
+
+    <!-- Кнопка "Наверх" -->
+    <button onclick="scrollToTop()" id="scrollTopBtn" title="Наверх">↑</button>
+
+    <!-- Подключаем библиотеки -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="scriptgl.js"></script>
+
+    <!-- JS логика кнопки "Наверх" -->
+    <script>
+        window.onscroll = function() {
+            const btn = document.getElementById("scrollTopBtn");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+    <!-- JS для наведения -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrappers = document.querySelectorAll('.splitpic-wrapper');
+
+            wrappers.forEach(wrapper => {
+                const leftImage = wrapper.querySelector('.splitpic-left-image img');
+                const rightImage = wrapper.querySelector('.splitpic-right-image img');
+
+                leftImage.style.display = 'none';
+
+                wrapper.addEventListener('mouseenter', () => {
+                    leftImage.style.display = 'block';
+                    rightImage.style.display = 'none';
+                });
+
+                wrapper.addEventListener('mouseleave', () => {
+                    leftImage.style.display = 'none';
+                    rightImage.style.display = 'block';
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'ru',
+      includedLanguages: 'en,ru,be,uk,de,fr,pl', // добавьте нужные языки
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" 
+  src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+</body>
+</html>

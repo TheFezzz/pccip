@@ -1,0 +1,79 @@
+.splitpic {
+    max-width: 600px; /* Ограничиваем ширину блока */
+    margin: 0 auto;    /* Центрируем по горизонтали */
+  }
+  
+  .splitpic .splitpic-images {
+    position: relative;
+    overflow: hidden;
+    height: auto;
+  }
+  
+  .splitpic-image {
+    overflow: hidden;
+    margin-top: 0px;
+  }
+  
+  .splitpic-left-image {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  
+  .splitpic-images img {
+    width: 100%;
+    height: auto; /* Сохраняем пропорции */
+    display: block;
+  }
+  
+  .splitpic-info {
+    top: 45%;
+    width: 100%;
+    font-size: 200%;
+    color: white;
+    position: absolute;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.50);
+  }
+  
+  .splitpic-bar {
+    position: absolute;
+    background-color: #113;
+  }
+  
+  .splitpic-horizontal {
+    cursor: ew-resize;
+  }
+  .splitpic-horizontal .splitpic-bar {
+    top: 0;
+    width: 5px;
+    height: 100%;
+  }
+  
+  .splitpic-vertical {
+    cursor: ns-resize;
+  }
+  .splitpic-vertical .splitpic-bar {
+    left: 0;
+    width: 100%;
+    height: 5px;
+  }
+
+  .image-description {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #333;
+}
+
+.image-description h3 {
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+.image-description p {
+    font-size: 1em;
+    line-height: 1.5;
+}

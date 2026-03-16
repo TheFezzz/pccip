@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Геноцид в Беларуси</title>
+  <style>
+  /* ── ШАПКА ── */
+  header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #2e2e2e;
+    box-sizing: border-box;
+  }
+
+  /* Левый и правый блоки одинаковой ширины — навигация по центру */
+  .header-left {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .header-right {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  .nav-btn {
+    display: inline-block;
+    background-color: #2a2a2a;
+    color: #ccc !important;         /* перебиваем глобальный a{color:#FF5722} */
+    text-decoration: none !important;
+    border: 1px solid #3a3a3a;
+    padding: 6px 13px;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.1s;
+  }
+
+  .nav-btn:hover {
+    background-color: #FF5722;
+    border-color: #FF5722;
+    color: #fff !important;
+    transform: translateY(-1px);
+  }
+
+  /* ── КНОПКИ АВТОРИЗАЦИИ ── */
+  .auth-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+    flex-shrink: 0;
+    margin-right: 12px;
+  }
+
+  .auth-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background-color: #2a2a2a;
+    color: #ccc !important;
+    text-decoration: none !important;
+    border: 1px solid #444;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 11px;
+    white-space: nowrap;
+    min-width: 68px;
+    line-height: 1;
+    text-align: center;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.1s;
+  }
+
+  .auth-btn:hover {
+    background-color: #3a3a3a;
+    border-color: #FF5722;
+    color: #fff !important;
+    transform: translateY(-1px);
+  }
+
+  .auth-btn svg {
+    display: block;
+    flex-shrink: 0;
+    margin: 0 auto;
+  }
+
+  .auth-btn-profile {
+    background: linear-gradient(135deg,#ff7043,#ff5722);
+    border-color: #ff5722;
+    color: #fff !important;
+  }
+
+  .auth-btn-profile:hover {
+    background: linear-gradient(135deg,#ff8a50,#ff7043);
+    border-color: #ff8a50;
+  }
+
+  /* ── КНОПКИ ПРОКРУТКИ ── */
+  #scrollUpBtn, #scrollDownBtn {
+    position: fixed;
+    right: 40px;
+    z-index: 1000;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: background-color 0.3s;
+  }
+
+  #scrollUpBtn  { bottom: 80px; }
+  #scrollDownBtn{ bottom: 20px; }
+
+  #scrollUpBtn:hover,
+  #scrollDownBtn:hover {
+    background-color: #FF5722;
+  }
+
+  /* ── АДАПТИВ ШАПКИ ── */
+  @media (max-width: 900px) {
+    header {
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px 14px;
+    }
+    .header-left, .header-right {
+      flex: none;
+      width: 100%;
+      justify-content: center;
+    }
+    .nav-buttons {
+      justify-content: center;
+    }
+    .auth-buttons {
+      justify-content: center;
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .nav-buttons {
+      gap: 4px;
+    }
+    .nav-btn {
+      padding: 5px 9px;
+      font-size: 11px;
+    }
+    .auth-btn {
+      padding: 6px 10px;
+      font-size: 10px;
+      min-width: 56px;
+    }
+    .auth-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+    #scrollUpBtn, #scrollDownBtn {
+      right: 14px;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+    #scrollUpBtn  { bottom: 60px; }
+    #scrollDownBtn{ bottom: 12px; }
+  }
+  </style>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-left"></div>
+    <nav class="nav-buttons">
+      <a href="6btn.php" class="nav-btn">Стена памяти</a> 
+      <a href="1btn.html" class="nav-btn">Мемориалы</a>
+      <a href="2btn.php" class="nav-btn">Карта событий</a>
+      <a href="7btn.html" class="nav-btn">Хронология</a>
+      <a href="3btn.html" class="nav-btn">Галерея</a>
+      <a href="4btn.php" class="nav-btn">Истории очевидцев</a>
+      <a href="5btn.html" class="nav-btn">Образование</a>
+    </nav>
+    <div class="header-right">
+    <div class="auth-buttons">
+      <!-- Войти -->
+      <a href="login.php" class="auth-btn auth-btn-login">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4" stroke="#ff5722" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="10 17 15 12 10 7" stroke="#ff5722" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="15" y1="12" x2="3" y2="12" stroke="#ff5722" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Войти
+      </a>
+      <!-- Регистрация -->
+      <a href="register.php" class="auth-btn auth-btn-register">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="8" r="4" stroke="#ccc" stroke-width="2" fill="none"/>
+          <path d="M2 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#ccc" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <line x1="19" y1="3" x2="19" y2="9" stroke="#ff5722" stroke-width="2" stroke-linecap="round"/>
+          <line x1="16" y1="6" x2="22" y2="6" stroke="#ff5722" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Регистрация
+      </a>
+      <!-- Профиль -->
+      <a href="profile.php" class="auth-btn auth-btn-profile">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="8" r="4" stroke="#fff" stroke-width="2" fill="none"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        Профиль
+      </a>
+    </div>
+    </div>
+  </header>
+
+  <div class="section">
+    <h1>ГЕНОЦИД В БЕЛАРУСИ</h1>
+    <h2>Что такое геноцид?</h2>
+    <p>
+      Геноцид — это преднамеренное уничтожение целого народа, этнической или религиозной группы. В годы Второй мировой войны на территории Беларуси нацисты применяли системный террор, массовые убийства мирного населения и сожжение деревень. Геноцид белорусского народа был частью политики "генерального плана Ост" по очищению Восточной Европы.
+    </p>
+    <div class="highlight">
+      📌 В Беларуси уничтожено свыше <strong>2 миллионов человек</strong>, из них — более 500 000 детей.
+    </div>
+  </div>
+
+<div class="section">
+  <h2>Память в фотографиях</h2>
+  <div class="photo-carousel">
+    <div class="carousel-track">
+    <!-- 1-й блок картинок -->
+    <img src="https://avatars.mds.yandex.net/i?id=cfdfc6ebe18e435234ecf7c5c135afc0_l-5094280-images-thumbs&n=13" alt="Фото 1">
+    <img src="https://avatars.mds.yandex.net/i?id=e4ca7ddd91a327d2da32d62798c92978_l-5215694-images-thumbs&n=13" alt="Фото 2">
+    <img src="https://avatars.mds.yandex.net/i?id=69f533279e39cff8ccf8b8d608341c79_l-10697673-images-thumbs&n=13" alt="Фото 3">
+    <img src="https://avatars.mds.yandex.net/i?id=16b0c5c9058ab5d272a53941680f642e_l-8258696-images-thumbs&n=13" alt="Фото 4">
+    
+    <!-- 2-й блок картинок (повтор) -->
+    <img src="https://avatars.mds.yandex.net/i?id=cfdfc6ebe18e435234ecf7c5c135afc0_l-5094280-images-thumbs&n=13" alt="Фото 1">
+    <img src="https://avatars.mds.yandex.net/i?id=e4ca7ddd91a327d2da32d62798c92978_l-5215694-images-thumbs&n=13" alt="Фото 2">
+    <img src="https://avatars.mds.yandex.net/i?id=69f533279e39cff8ccf8b8d608341c79_l-10697673-images-thumbs&n=13" alt="Фото 3">
+    <img src="https://avatars.mds.yandex.net/i?id=16b0c5c9058ab5d272a53941680f642e_l-8258696-images-thumbs&n=13" alt="Фото 4">
+  </div>
+</div>
+</div>
+
+
+<div class="section">
+  <h2>Факты, которые нельзя забыть</h2>
+  <div class="facts-grid">
+    <div class="fact-card">
+      <h3>Деревни-хатыни</h3>
+      <p>Свыше 600 деревень были сожжены вместе с жителями. Хатынь стала символом трагедии — но не единственным местом массового ужаса.</p>
+    </div>
+    <div class="fact-card">
+      <h3>Концлагеря</h3>
+      <p>На территории Беларуси функционировало более 260 концлагерей и гетто. Один из крупнейших — лагерь «Тростенец» — третий по числу жертв в Европе.</p>
+    </div>
+    <div class="fact-card">
+      <h3>Массовые расстрелы</h3>
+      <p>Операции карательных батальонов уничтожали целые сёла. Часто жертвами становились старики, женщины и дети.</p>
+    </div>
+    <div class="fact-card">
+      <h3>Документы и архивы</h3>
+      <p>Сегодня тысячи документов, найденных в архивах КГБ и Германии, подтверждают спланированность преступлений против мирного населения.</p>
+    </div>
+    <div class="fact-card">
+      <h3>Сопротивление и партизаны</h3>
+      <p>Белорусские партизаны вели активную борьбу с оккупантами, уничтожали инфраструктуру врага и спасали мирных жителей от расправ.</p>
+    </div>
+    <div class="fact-card">
+      <h3>Дети войны</h3>
+      <p>Тысячи детей остались сиротами, были угнаны в Германию или убиты. Их трагедия — одна из самых пронзительных страниц истории.</p>
+    </div>
+  </div>
+</div>
+
+
+  <div class="section">
+    <h2>Фотохроника геноцида</h2>
+    <img src="https://minjust.gov.by/upload/resize_cache/iblock/1a7/1200_1200_0/2.jpg" class="image-full" alt="Белорусский государственный архив кинофотофонодокументов">
+    <p>
+      📷 На фотографии: жители белорусской деревни, сожженной карателями, уходят в лес. 1942 год.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Свидетельства</h2>
+    <p>Тысячи очевидцев оставили свидетельства о зверствах. Эти рассказы — мощное оружие против забвения. Послушайте одну из таких историй:</p>
+    <iframe width="100%" height="400" src="https://rutube.ru/play/embed/95fe57c9a415990411a7ff94cac2f0bd/" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <div class="bottom-text">
+    «Если мы забудем прошлое — мы рискуем его повторить». История геноцида белорусского народа — это боль, но и сила. Знать, помнить, передавать.
+  </div>
+
+  <footer>
+    <!-- Футер теперь пустой или можно оставить только копирайт -->
+    <p>© Память о геноциде белорусского народа</p>
+  </footer>
+
+   <!-- Кнопка вверх -->
+  <button id="scrollUpBtn" title="Наверх" onclick="scrollToTop()">⬆</button>
+
+  <!-- Кнопка вниз -->
+  <button id="scrollDownBtn" title="Вниз" onclick="scrollToBottom()">⬇</button>
+
+
+<!-- Подключаем библиотеку Leaflet -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<!-- Подключение внешнего JS файла -->
+<script src="script.js"></script>
+
+<!-- Подключаем библиотеку PapaParse для чтения CSV -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+<script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', function () {
+      const upBtn = document.getElementById("scrollUpBtn");
+      const downBtn = document.getElementById("scrollDownBtn");
+
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+
+      if (scrollTop > 100) {
+        upBtn.style.display = "block";
+      } else {
+        upBtn.style.display = "none";
+      }
+
+      if (!scrollBottom) {
+        downBtn.style.display = "block";
+      } else {
+        downBtn.style.display = "none";
+      }
+    });
+  </script>
+</body>
+<script>
+  // Показываем / скрываем кнопки входа / регистрации / профиля
+  (function() {
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    }
+
+    const loggedIn = getCookie('auth_logged_in') === '1';
+    const loginBtn = document.querySelector('.auth-btn-login');
+    const registerBtn = document.querySelector('.auth-btn-register');
+    const profileBtn = document.querySelector('.auth-btn-profile');
+
+    if (!loginBtn || !registerBtn || !profileBtn) return;
+
+    if (loggedIn) {
+      loginBtn.style.display = 'none';
+      registerBtn.style.display = 'none';
+      profileBtn.style.display = 'inline-block';
+    } else {
+      loginBtn.style.display = 'inline-block';
+      registerBtn.style.display = 'inline-block';
+      profileBtn.style.display = 'none';
+    }
+  })();
+</script>
+</html>
