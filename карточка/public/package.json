@@ -1,0 +1,21 @@
+{
+  "name": "anketa-form-task",
+  "version": "1.0.0",
+  "description": "Учебное задание: пользовательская форма, работа с данными, cookie, JSON, Local Storage.",
+  "private": true,
+  "scripts": {
+    "start": "echo \"Откройте index.html через ваш локальный веб-сервер (OSPanel).\""
+  },
+  "keywords": [
+    "html",
+    "javascript",
+    "forms",
+    "cookies",
+    "json",
+    "localstorage"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}
+

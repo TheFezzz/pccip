@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Анкета</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <h1 class="page__title">Анкета</h1>
+
+    <form id="surveyForm" class="form">
+      <fieldset class="form__fieldset">
+        <legend class="form__legend">Ввод исходных данных (заголовок рамки)</legend>
+
+        <label class="form__row">
+          <span class="form__label-text">Имя</span>
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            required
+            minlength="2"
+            maxlength="40"
+            autocomplete="given-name"
+            placeholder="Иван">
+        </label>
+
+        <label class="form__row">
+          <span class="form__label-text">Фамилия</span>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            required
+            minlength="2"
+            maxlength="40"
+            autocomplete="family-name"
+            placeholder="Иванов">
+        </label>
+
+        <label class="form__row">
+          <span class="form__label-text">E-mail</span>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            maxlength="60"
+            placeholder="iba@iba.ru">
+        </label>
+
+        <label class="form__row form__row--textarea">
+          <span class="form__label-text">Комментарий</span>
+          <textarea
+            name="comment"
+            id="comment"
+            required
+            rows="4"
+            maxlength="500"
+            placeholder="Знакомлюсь с формами через PHP и рамками в HTML. Тег &lt;fieldset&gt;">
+          </textarea>
+        </label>
+
+        <div class="form__buttons">
+          <button type="submit" class="btn btn--primary">OK</button>
+          <button type="reset" class="btn btn--secondary" id="cancelBtn">Отмена — Cancel</button>
+        </div>
+      </fieldset>
+    </form>
+
+    <section class="output">
+      <h2 class="output__title">Результат обработки формы</h2>
+      <div id="formValues" class="output__block"></div>
+
+      <div class="output__cookie-header">
+        <h3 class="output__subtitle">Данные из cookie</h3>
+        <button type="button" class="btn btn--danger" id="clearCookieBtn">Очистить cookie</button>
+      </div>
+      <div id="cookieValues" class="output__block output__block--muted"></div>
+
+      <h3 class="output__subtitle">Данные в JSON‑формате</h3>
+      <pre id="jsonOutput" class="output__json"></pre>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
